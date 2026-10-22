@@ -20,55 +20,51 @@
     min-width: 320px;
     overflow-wrap: break-word;
     overflow-x: hidden;
+    line-height: 1.7;
   }
 
   :root {
-    /* Paper-inspired palette */
-    --background: 48 30% 97%;       /* #FAF9F6 paper white */
-    --foreground: 18 20% 10%;       /* #171717 ink black */
-    --card: 48 30% 100%;            /* warm white */
-    --card-foreground: 18 20% 10%;
-    --primary: 46 85% 55%;          /* #F7D94C primary yellow */
-    --primary-foreground: 18 20% 10%;
-    --secondary: 48 30% 94%;        /* #E7E5E1 warm grey */
-    --secondary-foreground: 18 20% 25%;
-    --muted: 48 20% 90%;
-    --muted-foreground: 18 20% 45%;
-    --accent: 46 85% 55%;
-    --accent-foreground: 18 20% 10%;
-    --border: 48 20% 88%;
-    --ring: 46 85% 55%;
-    --radius: 0.5rem;
-
-    /* Named accent colors for sticky notes */
-    --color-yellow: 46 85% 55%;
-    --color-blue: 205 60% 75%;
-    --color-mint: 155 55% 80%;
-    --color-pink: 340 60% 82%;
-    --color-lavender: 250 55% 88%;
-  }
-
-  /* Display (serif) font stack */
-  :root {
-    --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+    --background: 0 0% 98%;
+    --foreground: 0 0% 9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 9%;
+    --primary: 22 100% 39%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 94%;
+    --secondary-foreground: 0 0% 15%;
+    --muted: 0 0% 92%;
+    --muted-foreground: 0 0% 38%;
+    --accent: 22 100% 39%;
+    --accent-foreground: 0 0% 100%;
+    --border: 0 0% 86%;
+    --ring: 22 100% 50%;
+    --radius: 1rem;
   }
 
   .dark {
-    --background: 18 20% 8%;
-    --foreground: 48 30% 97%;
-    --card: 18 20% 12%;
-    --card-foreground: 48 30% 97%;
-    --primary: 46 85% 55%;
-    --primary-foreground: 18 20% 10%;
-    --secondary: 18 20% 15%;
-    --secondary-foreground: 48 30% 80%;
-    --muted: 18 20% 15%;
-    --muted-foreground: 48 30% 55%;
-    --border: 18 20% 20%;
+    --background: 0 0% 5%;
+    --foreground: 0 0% 96%;
+    --card: 0 0% 11%;
+    --card-foreground: 0 0% 96%;
+    --primary: 25 100% 50%;
+    --primary-foreground: 0 0% 5%;
+    --secondary: 0 0% 9%;
+    --secondary-foreground: 0 0% 88%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 70%;
+    --accent: 25 100% 50%;
+    --accent-foreground: 0 0% 5%;
+    --border: 0 0% 20%;
+    --ring: 25 100% 50%;
   }
 
   * {
     @apply border-border;
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 3px;
   }
 
   ::-webkit-scrollbar {
@@ -108,71 +104,19 @@
 
   /* Premium gradient typography */
   .text-gradient {
-    @apply bg-gradient-to-r from-primary via-amber-400 to-primary bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-primary to-orange-300 bg-clip-text text-transparent;
   }
 
-  /* Classic foil / metallic gradient - for hero + section titles */
   .text-gradient-foil {
-    background-image: linear-gradient(
-      100deg,
-      hsl(38 92% 62%) 0%,
-      hsl(46 100% 72%) 22%,
-      hsl(30 80% 55%) 42%,
-      hsl(46 100% 78%) 58%,
-      hsl(38 90% 58%) 78%,
-      hsl(46 100% 70%) 100%
-    );
-    background-size: 220% 100%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
+    color: hsl(var(--foreground));
   }
 
-  /* Ink-to-gold gradient for dark mode */
   .text-gradient-ink {
-    background-image: linear-gradient(
-      100deg,
-      hsl(var(--foreground)) 0%,
-      hsl(38 92% 66%) 38%,
-      hsl(var(--foreground)) 62%,
-      hsl(46 100% 72%) 88%,
-      hsl(var(--foreground)) 100%
-    );
-    background-size: 220% 100%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
+    color: hsl(var(--foreground));
   }
 
-  /* Theme-aware heading gradient - light: gold foil, dark: ink-to-gold */
   .heading-gradient {
-    background-image: linear-gradient(
-      100deg,
-      hsl(38 92% 62%) 0%,
-      hsl(46 100% 72%) 22%,
-      hsl(30 80% 55%) 42%,
-      hsl(46 100% 78%) 58%,
-      hsl(38 90% 58%) 78%,
-      hsl(46 100% 70%) 100%
-    );
-    background-size: 220% 100%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .dark .heading-gradient {
-    background-image: linear-gradient(
-      100deg,
-      hsl(var(--foreground)) 0%,
-      hsl(38 92% 66%) 34%,
-      hsl(var(--foreground)) 58%,
-      hsl(46 100% 72%) 84%,
-      hsl(var(--foreground)) 100%
-    );
+    color: hsl(var(--foreground));
   }
 
   /* Gradient hairline rule */
@@ -231,12 +175,12 @@
   }
 
   .paper-card {
-    @apply relative bg-card border border-border/80 shadow-sm transition-all duration-300 hover:shadow-md;
+    @apply relative rounded-2xl bg-card border border-border/80 shadow-sm transition-all duration-200 hover:border-primary/40 hover:shadow-lg;
   }
 
   /* Shared container system - consistent across all sections */
   .section-container {
-    width: min(100% - 96px, 1280px);
+    width: min(100% - 96px, 1200px);
     margin-inline: auto;
     padding: 0;
   }
@@ -305,12 +249,12 @@
   }
 
   .sticky-note {
-    @apply relative inline-block p-3 rounded-sm shadow-sm border border-border/60 text-foreground;
-    box-shadow: 4px 4px 0px hsl(var(--border) / 0.4);
+    @apply relative inline-block rounded-full border border-border/70 bg-secondary px-3 py-1.5 text-foreground;
+    box-shadow: none;
   }
 
   .polaroid {
-    @apply relative bg-white p-3 border border-border/60 shadow-md;
+    @apply relative rounded-2xl bg-card p-3 border border-border/60 shadow-md;
   }
   .polaroid img {
     @apply block rounded-sm border border-border/40;
@@ -320,7 +264,7 @@
   }
   .polaroid::before {
     content: "";
-    @apply absolute inset-0 rounded-sm border border-white/60 pointer-events-none;
+    @apply absolute inset-0 rounded-2xl border border-border/40 pointer-events-none;
   }
 
   /* Z-index scale */

@@ -17,8 +17,8 @@ export function AchievementsSection() {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }}
           className="mx-auto max-w-2xl text-center mb-12 overflow-guard"
         >
-          <span className="sticky-note bg-mint-100 border-mint-200 tilt-2">
-            <span className="font-space text-xs font-bold text-mint-900 uppercase tracking-tighter">
+          <span className="sticky-note tilt-2">
+            <span className="font-space text-xs font-bold text-foreground uppercase tracking-tighter">
               THE JOURNEY SO FAR
             </span>
           </span>

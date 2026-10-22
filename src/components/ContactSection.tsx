@@ -73,8 +73,8 @@ export function ContactSection() {
           className="mx-auto max-w-4xl text-center mb-16 overflow-guard"
         >
           <div className="flex items-center justify-center gap-2 mb-6">
-            <span className="sticky-note bg-yellow-100 border-yellow-200 tilt-n3">
-              <span className="font-space text-xs font-bold text-yellow-900 uppercase tracking-tighter">
+            <span className="sticky-note tilt-n3">
+              <span className="font-space text-xs font-bold text-foreground uppercase tracking-tighter">
                 LET&apos;S TALK
               </span>
             </span>
@@ -301,7 +301,7 @@ export function ContactSection() {
               className={`w-full rounded-xl px-6 py-3 text-xs font-display font-bold text-primary-foreground uppercase tracking-widest transition-all disabled:opacity-50 ${
                 status === "loading"
                   ? "bg-secondary text-secondary-foreground cursor-not-allowed"
-                  : "bg-primary hover:bg-yellow-400/90 shadow-sm hover:shadow-md hover:-translate-y-0.5"
+                  : "bg-primary hover:bg-orange-400 shadow-sm hover:shadow-md hover:-translate-y-0.5"
               }`}
             >
               {status === "loading" ? (

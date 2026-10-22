@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export function StickyNote({
   children,
-  color = "bg-yellow-100 border-yellow-200 text-yellow-900",
+  color = "bg-secondary border-border text-foreground",
   rotate = "tilt-0",
   className = "",
 }: {
@@ -69,8 +69,8 @@ export function SectionHeading({
           align === "center" ? "justify-center" : "justify-start"
         }`}
       >
-        <span className="sticky-note bg-yellow-100 border-yellow-200 tilt-n3 shrink-0">
-          <span className="font-space text-xs font-bold text-yellow-900 uppercase tracking-tighter">
+        <span className="sticky-note tilt-n3 shrink-0">
+          <span className="font-space text-xs font-bold text-foreground uppercase tracking-tighter">
             {eyebrow}
           </span>
         </span>

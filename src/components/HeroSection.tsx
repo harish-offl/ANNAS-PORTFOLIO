@@ -30,30 +30,26 @@ export function HeroSection() {
         <div
           className="absolute -inset-1 rounded-full bg-primary/20 blur-[140px] animate-[pulse_8s_ease-in-out_infinite]"
         />
-        <div
-          className="absolute top-1/4 left-1/4 h-64 w-64 rounded-full bg-blue-200/30 blur-[120px] animate-[pulse_10s_ease-in-out_infinite_reverse]"
-        />
-        <div
-          className="absolute -bottom-1/4 right-1/4 h-48 w-48 rounded-full bg-pink-200/30 blur-[100px] animate-[pulse_12s_ease-in-out_infinite]"
-        />
+        <div className="absolute top-1/4 left-1/4 h-64 w-64 rounded-full bg-primary/10 blur-[120px]" />
+        <div className="absolute -bottom-1/4 right-1/4 h-48 w-48 rounded-full bg-primary/5 blur-[100px]" />
       </div>
 
       <div className="section-container relative z-content">
         <motion.div variants={container} initial="hidden" animate="show">
           <motion.div variants={item} className="text-center overflow-guard w-full max-w-[900px] mx-auto">
             <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-6 overflow-guard">
-              <span className="sticky-note bg-yellow-100 border-yellow-200 tilt-n2">
-                <span className="font-space text-[10px] sm:text-xs font-bold text-yellow-900 uppercase tracking-tighter">
+              <span className="sticky-note tilt-n2">
+                <span className="font-space text-[10px] sm:text-xs font-bold text-foreground uppercase tracking-tighter">
                   CREATIVE DEVELOPER
                 </span>
               </span>
-              <span className="sticky-note bg-blue-100 border-blue-200 tilt-2">
-                <span className="font-space text-[10px] sm:text-xs font-bold text-blue-900 uppercase tracking-tighter">
+              <span className="sticky-note tilt-2">
+                <span className="font-space text-[10px] sm:text-xs font-bold text-foreground uppercase tracking-tighter">
                   VIDEO EDITOR
                 </span>
               </span>
-              <span className="sticky-note bg-pink-100 border-pink-200 tilt-n3">
-                <span className="font-space text-[10px] sm:text-xs font-bold text-pink-900 uppercase tracking-tighter">
+              <span className="sticky-note tilt-n3">
+                <span className="font-space text-[10px] sm:text-xs font-bold text-foreground uppercase tracking-tighter">
                   DIGITAL CREATOR
                 </span>
               </span>
@@ -106,13 +102,13 @@ export function HeroSection() {
               variants={item}
               className="mt-12 sm:mt-14 flex flex-wrap items-center justify-center gap-3 sm:gap-4 overflow-guard"
             >
-              <span className="sticky-note bg-mint-100 border-mint-200 tilt-n1">
-                <span className="font-space text-[10px] font-bold text-mint-900 uppercase tracking-tighter">
+              <span className="sticky-note tilt-n1">
+                <span className="font-space text-[10px] font-bold text-foreground uppercase tracking-tighter">
                   Ideas &rarr; Impact
                 </span>
               </span>
-              <span className="sticky-note bg-lavender-100 border-lavender-200 tilt-3">
-                <span className="font-space text-[10px] font-bold text-lavender-900 uppercase tracking-tighter">
+              <span className="sticky-note tilt-3">
+                <span className="font-space text-[10px] font-bold text-foreground uppercase tracking-tighter">
                   3+ YEARS CREATING
                 </span>
               </span>

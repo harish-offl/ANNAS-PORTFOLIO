@@ -13,8 +13,8 @@ const services = [
     description:
       "I design and develop responsive websites, landing pages, portfolios, and e-commerce experiences that combine usability with strong visual identity.",
     tags: ["Next.js", "React", "Tailwind", "E-commerce"],
-    color: "bg-blue-50 border-blue-200 text-blue-900",
-    iconBg: "bg-blue-50/60 text-blue-900 border-blue-200/60",
+    color: "bg-card border-border/70 text-foreground",
+    iconBg: "bg-primary/10 text-primary border-primary/20",
   },
   {
     id: "video",
@@ -24,8 +24,8 @@ const services = [
     description:
       "I create engaging short-form and long-form content for brands, creators, and businesses, with a focus on pacing, storytelling, and audience retention.",
     tags: ["Reels", "Shorts", "CapCut", "Premiere Pro"],
-    color: "bg-pink-50 border-pink-200 text-pink-900",
-    iconBg: "bg-pink-50/60 text-pink-900 border-pink-200/60",
+    color: "bg-card border-border/70 text-foreground",
+    iconBg: "bg-primary/10 text-primary border-primary/20",
   },
   {
     id: "design",
@@ -35,8 +35,8 @@ const services = [
     description:
       "I design social media creatives, promotional graphics, visual assets, and branded content that communicate clearly and consistently.",
     tags: ["Branding", "Canva", "Social Media", "Visual Identity"],
-    color: "bg-mint-50 border-mint-200 text-mint-900",
-    iconBg: "bg-mint-50/60 text-mint-900 border-mint-200/60",
+    color: "bg-card border-border/70 text-foreground",
+    iconBg: "bg-primary/10 text-primary border-primary/20",
   },
   {
     id: "ai",
@@ -46,8 +46,8 @@ const services = [
     description:
       "I explore practical AI-powered workflows that reduce repetitive tasks and help businesses operate more efficiently.",
     tags: ["AI", "Automation", "Workflows", "Prompt Engineering"],
-    color: "bg-lavender-50 border-lavender-200 text-lavender-900",
-    iconBg: "bg-lavender-50/60 text-lavender-900 border-lavender-200/60",
+    color: "bg-card border-border/70 text-foreground",
+    iconBg: "bg-primary/10 text-primary border-primary/20",
   },
   {
     id: "products",
@@ -57,8 +57,8 @@ const services = [
     description:
       "I develop practical web applications, dashboards, and business tools that solve real workflow problems.",
     tags: ["Web Apps", "Dashboards", "Tools", "Product Design"],
-    color: "bg-yellow-50 border-yellow-200 text-yellow-900",
-    iconBg: "bg-yellow-50/60 text-yellow-900 border-yellow-200/60",
+    color: "bg-card border-border/70 text-foreground",
+    iconBg: "bg-primary/10 text-primary border-primary/20",
   },
   {
     id: "strategy",
@@ -68,8 +68,8 @@ const services = [
     description:
       "I combine content, design, technology, and branding to help businesses present their ideas effectively online.",
     tags: ["Strategy", "Branding", "Content", "Consulting"],
-    color: "bg-secondary border-border/60 text-foreground",
-    iconBg: "bg-secondary/60 text-foreground border-border/60",
+    color: "bg-card border-border/70 text-foreground",
+    iconBg: "bg-primary/10 text-primary border-primary/20",
   },
 ];
 
@@ -89,8 +89,8 @@ export function ServicesSection() {
           className="mx-auto max-w-4xl text-center mb-16 overflow-guard"
         >
           <div className="flex items-center justify-center gap-2 mb-6">
-            <span className="sticky-note bg-yellow-100 border-yellow-200 tilt-n3">
-              <span className="font-space text-xs font-bold text-yellow-900 uppercase tracking-tighter">
+            <span className="sticky-note tilt-n3">
+              <span className="font-space text-xs font-bold text-foreground uppercase tracking-tighter">
                 WHAT I DO
               </span>
             </span>
@@ -115,7 +115,7 @@ export function ServicesSection() {
               whileHover={{ y: -4 }}
               className={`relative group paper-card p-6 ${service.color} overflow-guard min-w-0`}
             >
-              <div className="absolute -top-2 -right-2 h-7 w-7 rounded-full bg-white border border-border/60 shadow-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="absolute -top-2 -right-2 h-7 w-7 rounded-full bg-card border border-border/60 shadow-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                 <span className="text-[9px] font-bold text-primary">✓</span>
               </div>
               <div className="flex items-center gap-3 mb-4">
@@ -147,8 +147,8 @@ export function ServicesSection() {
         </div>
 
         <div className="mt-16 flex justify-center overflow-guard">
-          <span className="sticky-note bg-mint-100 border-mint-200 tilt-2">
-            <span className="font-space text-xs font-bold text-mint-900 uppercase tracking-tighter">
+          <span className="sticky-note tilt-2">
+            <span className="font-space text-xs font-bold text-foreground uppercase tracking-tighter">
               Available for freelance & remote work
             </span>
           </span>

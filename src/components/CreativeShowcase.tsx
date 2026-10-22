@@ -9,35 +9,35 @@ const collageItems = [
     label: "Web Design",
     icon: Layout,
     rotate: "tilt-n3",
-    color: "border-blue-200 bg-blue-50",
+    color: "border-border/70 bg-card",
   },
   {
     title: "Mobile Interface",
     label: "App Design",
     icon: Camera,
     rotate: "tilt-2",
-    color: "border-pink-200 bg-pink-50",
+    color: "border-border/70 bg-card",
   },
   {
     title: "Video Timeline",
     label: "Video Editing",
     icon: Film,
     rotate: "tilt-n5",
-    color: "border-mint-200 bg-mint-50",
+    color: "border-border/70 bg-card",
   },
   {
     title: "Brand Identity",
     label: "Graphic Design",
     icon: Palette,
     rotate: "tilt-3",
-    color: "border-lavender-200 bg-lavender-50",
+    color: "border-border/70 bg-card",
   },
   {
     title: "AI Automation",
     label: "AI Workflow",
     icon: Cpu,
     rotate: "tilt-n2",
-    color: "border-yellow-200 bg-yellow-50",
+    color: "border-border/70 bg-card",
   },
   {
     title: "Code Editor",
@@ -57,8 +57,8 @@ export function CreativeShowcase() {
       <div className="section-container relative z-content">
         <div className="mx-auto max-w-3xl">
           <div className="flex flex-col items-center gap-5 sm:flex-row sm:items-center sm:justify-between sm:gap-6 mb-8 overflow-guard">
-            <span className="sticky-note bg-yellow-100 border-yellow-200 tilt-n2 shrink-0">
-              <span className="font-space text-xs font-bold text-yellow-900 uppercase tracking-tighter">
+            <span className="sticky-note tilt-n2 shrink-0">
+              <span className="font-space text-xs font-bold text-foreground uppercase tracking-tighter">
                 BUILT WITH CURIOSITY
               </span>
             </span>
@@ -101,7 +101,7 @@ export function CreativeShowcase() {
                 </div>
               </div>
               <div
-                className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-white border border-border/60 shadow-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-card border border-border/60 shadow-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
               >
                 <span className="text-[9px] font-bold text-primary">✓</span>
               </div>

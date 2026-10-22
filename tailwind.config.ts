@@ -8,7 +8,7 @@ const config: Config = {
       center: true,
       padding: "1.5rem",
       screens: {
-        "2xl": "1280px",
+        "2xl": "1200px",
       },
     },
     extend: {
@@ -46,27 +46,27 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
-        display: ["var(--font-display)", "Georgia", "serif"],
-        grotesk: ["var(--font-grotesk)", "system-ui", "sans-serif"],
-        space: ["var(--font-grotesk)", "system-ui", "sans-serif"],
+        display: ["var(--font-sans)", "system-ui", "sans-serif"],
+        grotesk: ["var(--font-sans)", "system-ui", "sans-serif"],
+        space: ["var(--font-sans)", "system-ui", "sans-serif"],
         caveat: ["var(--font-caveat)", "cursive"],
         mono: ["var(--font-mono)", "monospace"],
       },
       fontSize: {
         "display-xs": [
-          "clamp(1.75rem, 4.5vw, 2.5rem)",
+            "clamp(1.25rem, 2.5vw, 1.75rem)",
           { lineHeight: "1.1", letterSpacing: "-0.02em" },
         ],
         "display-sm": [
-          "clamp(2rem, 5.5vw, 3.25rem)",
+            "clamp(1.75rem, 3.5vw, 2.75rem)",
           { lineHeight: "1.05", letterSpacing: "-0.022em" },
         ],
         "display-md": [
-          "clamp(2.25rem, 7vw, 4.5rem)",
+            "clamp(2rem, 4.5vw, 3.5rem)",
           { lineHeight: "1.04", letterSpacing: "-0.025em" },
         ],
         "display-lg": [
-          "clamp(2.25rem, 9vw, 6.5rem)",
+            "clamp(2.25rem, 6vw, 4.5rem)",
           { lineHeight: "0.98", letterSpacing: "-0.03em" },
         ],
       },

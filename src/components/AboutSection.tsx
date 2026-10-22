@@ -23,8 +23,8 @@ export function AboutSection() {
             className="md:col-span-1 lg:col-span-1"
           >
             <div className="mb-6 flex items-center gap-2 overflow-guard">
-              <span className="sticky-note bg-yellow-100 border-yellow-200 tilt-n3">
-                <span className="font-space text-xs font-bold text-yellow-900 uppercase tracking-tighter">
+              <span className="sticky-note tilt-n3">
+                <span className="font-space text-xs font-bold text-foreground uppercase tracking-tighter">
                   ABOUT ME
                 </span>
               </span>
@@ -55,8 +55,8 @@ export function AboutSection() {
                   </div>
                 </div>
               </div>
-              <div className="absolute -bottom-3 left-3 z-content sticky-note bg-mint-100 border-mint-200 tilt-3">
-                <span className="font-space text-[10px] font-bold text-mint-900 uppercase tracking-tighter">
+              <div className="absolute -bottom-3 left-3 z-content sticky-note tilt-3">
+                <span className="font-space text-[10px] font-bold text-foreground uppercase tracking-tighter">
                   MADURAI, INDIA
                 </span>
               </div>

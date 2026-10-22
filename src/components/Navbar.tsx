@@ -107,6 +107,8 @@ export function Navbar() {
               type="button"
               onClick={() => setOpen((v) => !v)}
               aria-label="Toggle menu"
+              aria-expanded={open}
+              aria-controls="mobile-navigation"
               className="grid h-9 w-9 place-items-center rounded-full border border-border/60 text-muted-foreground md:hidden"
             >
               {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
@@ -117,6 +119,7 @@ export function Navbar() {
         <AnimatePresence>
           {open && (
             <motion.div
+              id="mobile-navigation"
               initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}

@@ -12,6 +12,8 @@ export const profile = {
   email: "hello@annamalai.dev",
   phone: "+91 93639 73591",
   availability: "Available for select projects",
+  portfolioFiles:
+    "https://drive.google.com/drive/folders/1UXeMZt3F0YkpEaOqrdAnl8xcWxlp1ggI?usp=drive_link",
   socials: {
     github: "https://github.com/harish-offl",
     linkedin: "https://linkedin.com/in/mrmannamalai",
@@ -45,11 +47,9 @@ export type Project = {
   category: string;
   description: string;
   longDescription: string;
-  image: string;
   tags: string[];
   year?: string;
   demoUrl?: string;
-  sourceUrl?: string;
   status: "live" | "concept" | "private";
 };
 
@@ -59,44 +59,51 @@ export const projects: Project[] = [
     title: "Bangles by Beauty",
     category: "E-commerce / Web Development",
     description:
-      "A premium bangle-shopping experience focused on elegant product presentation, product discovery, and a smooth customer journey.",
+      "A handcrafted jewellery storefront for browsing bangle collections, custom accessories, and WhatsApp enquiry-based ordering.",
     longDescription:
-      "Bangles by Beauty is an e-commerce storefront designed for elegant product presentation and a frictionless customer journey. The project focuses on clean product discovery, clear categorization, and a checkout flow that keeps the focus on the product.\n\nThe implementation includes product listing pages, product detail views, and a responsive layout that works across mobile and desktop. Payment processing and order management are concept-stage unless verified as deployed.",
-    image: "/projects/bangles.jpg",
-    tags: ["Next.js", "Tailwind CSS", "E-commerce", "Responsive Design"],
+      "Bangles by Beauty is a made-to-order jewellery storefront from Pattukottai, Tamil Nadu. Visitors can browse collections and product details, then submit their selected items for confirmation through WhatsApp rather than paying online.",
+    tags: ["E-commerce", "Handcrafted Jewellery", "Responsive Design"],
     year: "2024",
-    demoUrl: "#",
-    sourceUrl: "#",
-    status: "concept",
+    demoUrl: "https://bangleswebsite.vercel.app/",
+    status: "live",
   },
   {
     id: "smp-food-products",
-    title: "SMP Food Products",
+    title: "SMP Products",
     category: "E-commerce / Brand Website",
     description:
       "A product-focused food brand website showcasing traditional and health-oriented products with a strong visual identity.",
     longDescription:
       "SMP Food Products is a brand website for a food company that emphasizes traditional and health-oriented products. The design puts product photography and brand storytelling at the center, with dedicated product pages and category navigation.\n\nProduct cards, brand presentation, and a clean e-commerce layout are included where assets are available.",
-    image: "/projects/smp-food.jpg",
-    tags: ["Next.js", "Brand Identity", "Product Design", "E-commerce"],
+    tags: ["Food & Nutrition", "Product Catalogue", "E-commerce"],
     year: "2024",
-    demoUrl: "#",
-    sourceUrl: "#",
-    status: "concept",
+    demoUrl: "https://smpproducts.vercel.app/",
+    status: "live",
   },
   {
     id: "arrise-digital",
     title: "Arrise Digital",
     category: "Agency Website / Branding",
     description:
-      "The digital home of Arrise Digital, a creative technology agency working across web development, content production, and automation.",
+      "A digital agency website presenting growth-focused marketing, website services, content, and AI-powered business solutions.",
     longDescription:
-      "Arrise Digital is the agency brand behind this portfolio. The website presents the agency's services across web development, content production, and automation, with a focus on the 'Partners in Progress' positioning.\n\nThe site includes service pages, case studies, and contact pathways for potential clients.",
-    image: "/projects/arrise.jpg",
-    tags: ["Next.js", "Branding", "Agency", "Web Development"],
+      "Arrise Digital presents growth-focused services including social media marketing, local business growth, website services, content, and AI-powered solutions, with clear contact pathways for prospective clients.",
+    tags: ["Digital Agency", "Marketing", "Web Development"],
     year: "2024",
-    demoUrl: "https://editorannamalai.bolt.host",
-    sourceUrl: "#",
+    demoUrl: "https://arrisedigital.vercel.app/",
+    status: "live",
+  },
+  {
+    id: "vaigai-namma-taxi",
+    title: "Vaigai Namma Taxi",
+    category: "Taxi Service / Business Website",
+    description:
+      "A taxi service website introducing rides across Tamil Nadu and making travel information easy to find.",
+    longDescription:
+      "Vaigai Namma Taxi presents a taxi service for travel across Tamil Nadu. The website introduces the service and makes ride information accessible to visitors.",
+    tags: ["Taxi Service", "Business Website", "Responsive Design"],
+    year: "2025",
+    demoUrl: "https://vaigainammataxi.netlify.app/",
     status: "live",
   },
   {
@@ -107,11 +114,9 @@ export const projects: Project[] = [
       "A study and productivity platform concept designed to help students organize study sessions, manage tasks, and track their progress.",
     longDescription:
       "Focura is a concept-stage productivity platform for students. It helps organize study sessions, manage tasks, and track progress over time.\n\nNote: This project is in concept stage. Some features shown may be incomplete or not yet implemented.",
-    image: "/projects/focura.jpg",
     tags: ["React", "Productivity", "UI/UX", "Concept"],
     year: "2024",
-    demoUrl: "#",
-    sourceUrl: "#",
+    demoUrl: "https://arrisedigitalfocura.vercel.app/",
     status: "concept",
   },
   {
@@ -122,11 +127,9 @@ export const projects: Project[] = [
       "A gate management system project focused on organizing operational workflows and supporting structured information management.",
     longDescription:
       "RML Gate Management System is an enterprise-focused tool for organizing operational workflows. The system supports structured information management for gate operations and access control.\n\nOnly verified, implemented functionality is described here.",
-    image: "/projects/rml-gate.jpg",
     tags: ["Enterprise", "Workflow", "TypeScript", "Next.js"],
     year: "2024",
-    demoUrl: "#",
-    sourceUrl: "#",
+    demoUrl: "https://rmlgate.vercel.app/login",
     status: "private",
   },
   {
@@ -137,11 +140,9 @@ export const projects: Project[] = [
       "A personal portfolio exploring creative development, motion, editorial layouts, and interactive storytelling.",
     longDescription:
       "This portfolio website itself — built with Next.js, React, Tailwind CSS, and Framer Motion. It explores editorial layouts, paper-inspired design details, and interactive storytelling for a creative developer's personal brand.",
-    image: "/projects/portfolio.jpg",
     tags: ["Next.js", "React", "Tailwind CSS", "Framer Motion"],
     year: "2025",
     demoUrl: "https://editorannamalai.bolt.host",
-    sourceUrl: "https://github.com/harish-offl",
     status: "live",
   },
 ];

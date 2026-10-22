@@ -1,30 +1,12 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display, Space_Grotesk, Caveat } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-
-const displayFont = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-display",
-  weight: ["400", "600", "700"],
-});
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
-});
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-grotesk",
-  weight: ["300", "400", "500", "600"],
-});
-
-const caveat = Caveat({
-  subsets: ["latin"],
-  variable: "--font-caveat",
-  weight: ["400", "600"],
 });
 
 export const metadata: Metadata = {
@@ -65,9 +47,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="dark" suppressHydrationWarning>
       <body
-        className={`${displayFont.variable} ${inter.variable} ${spaceGrotesk.variable} ${caveat.variable} font-grotesk bg-background text-foreground antialiased`}
+        className={`${inter.variable} font-sans bg-background text-foreground antialiased`}
       >
         <ThemeProvider>{children}</ThemeProvider>
       </body>
