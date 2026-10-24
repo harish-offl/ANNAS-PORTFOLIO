@@ -30,15 +30,15 @@ export function ProcessSection() {
         >
           <div className="flex items-center justify-center gap-2 mb-6">
             <span className="sticky-note tilt-n3">
-              <span className="font-space text-xs font-bold text-foreground uppercase tracking-tighter">
+              <span className="font-heading text-xs font-bold text-foreground uppercase tracking-tighter">
                 THE PROCESS
               </span>
             </span>
           </div>
-          <h2 className="font-display font-normal leading-[1.05] text-display-sm heading-gradient mb-6 text-balance">
+          <h2 className="font-heading font-bold leading-[1.05] text-display-sm heading-gradient mb-6 text-balance">
             From Idea to Something Real.
           </h2>
-          <p className="text-muted-foreground text-sm md:text-base max-w-2xl mx-auto leading-relaxed text-balance">
+          <p className="text-muted-foreground text-sm md:text-base max-w-2xl mx-auto font-body leading-relaxed text-balance">
             A personal, four-step approach to every project I take on.
           </p>
         </motion.div>
@@ -71,11 +71,11 @@ export function ProcessSection() {
                       "aria-hidden": true,
                     })}
                   </div>
-                  <span className="min-w-0 font-display text-xs font-bold uppercase tracking-widest text-foreground sm:text-sm">
+                  <span className="min-w-0 font-heading text-xs font-bold uppercase tracking-widest text-foreground sm:text-sm">
                     STEP {step.step} — {step.title}
                   </span>
                 </div>
-                <p className="text-sm font-space leading-relaxed text-muted-foreground/90">
+                <p className="text-sm font-body leading-relaxed text-muted-foreground/90">
                   {step.description}
                 </p>
               </div>

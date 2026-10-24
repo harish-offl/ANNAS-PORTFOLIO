@@ -9,7 +9,8 @@ export const profile = {
   experience: "3+ years",
   agency: "Arrise Digital",
   portfolio: "https://editorannamalai.bolt.host",
-  email: "hello@annamalai.dev",
+  agencyWebsite: "https://arrisedigital.vercel.app/",
+  email: "connectwithannamalai@gmail.com",
   phone: "+91 93639 73591",
   availability: "Available for select projects",
   portfolioFiles:
@@ -90,7 +91,7 @@ export const projects: Project[] = [
       "Arrise Digital presents growth-focused services including social media marketing, local business growth, website services, content, and AI-powered solutions, with clear contact pathways for prospective clients.",
     tags: ["Digital Agency", "Marketing", "Web Development"],
     year: "2024",
-    demoUrl: "https://arrisedigital.vercel.app/",
+    demoUrl: profile.agencyWebsite,
     status: "live",
   },
   {

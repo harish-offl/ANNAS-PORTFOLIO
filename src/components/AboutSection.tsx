@@ -24,12 +24,12 @@ export function AboutSection() {
           >
             <div className="mb-6 flex items-center gap-2 overflow-guard">
               <span className="sticky-note tilt-n3">
-                <span className="font-space text-xs font-bold text-foreground uppercase tracking-tighter">
+                <span className="font-heading text-xs font-bold text-foreground uppercase tracking-tighter">
                   ABOUT ME
                 </span>
               </span>
             </div>
-            <h2 className="font-display font-normal leading-[1.02] text-display-md heading-gradient text-balance">
+            <h2 className="font-heading font-bold leading-[1.04] text-display-md heading-gradient text-balance">
               Meet Annamalai.
             </h2>
             <div className="rule-gradient mt-6 w-24" />
@@ -49,14 +49,15 @@ export function AboutSection() {
                     <div className="h-24 w-24 sm:h-28 sm:w-28 md:h-32 md:w-32 rounded-full border-4 border-primary/30 bg-secondary flex items-center justify-center">
                       <Clapperboard className="h-9 w-9 sm:h-10 sm:w-10 md:h-12 md:w-12 text-primary" />
                     </div>
-                    <span className="font-caveat text-base sm:text-lg italic text-muted-foreground">
+                    {/* Body text - Inter 400 */}
+                    <span className="font-body text-base sm:text-lg text-muted-foreground">
                       Creative Developer &amp; Content Creator
                     </span>
                   </div>
                 </div>
               </div>
               <div className="absolute -bottom-3 left-3 z-content sticky-note tilt-3">
-                <span className="font-space text-[10px] font-bold text-foreground uppercase tracking-tighter">
+                <span className="font-heading text-[10px] font-bold text-foreground uppercase tracking-tighter">
                   MADURAI, INDIA
                 </span>
               </div>
@@ -73,7 +74,7 @@ export function AboutSection() {
             {aboutParagraphs.map((p, i) => (
               <p
                 key={i}
-                className="text-base sm:text-lg font-space leading-relaxed text-foreground/90 text-balance"
+                className="text-base sm:text-lg font-body leading-relaxed text-foreground/90 text-balance"
               >
                 {p}
               </p>
@@ -106,10 +107,10 @@ export function AboutSection() {
                     <item.icon className="h-5 w-5" />
                   </div>
                   <div className="min-w-0">
-                    <span className="block text-xs font-space font-bold uppercase tracking-widest text-muted-foreground">
+                    <span className="block text-xs font-semibold uppercase tracking-widest text-muted-foreground">
                       {item.label}
                     </span>
-                    <span className="block text-sm font-space text-foreground">
+                    <span className="block text-sm font-body text-foreground">
                       {item.value}
                     </span>
                   </div>
@@ -136,7 +137,7 @@ export function AboutSection() {
                   whileHover={{ y: -2 }}
                   className="sticky-note bg-primary/5 border-primary/25 tilt-n1 hover:bg-primary/10 hover:border-primary/40 transition-colors shrink-0"
                 >
-                  <span className="font-space text-[11px] font-bold text-primary uppercase tracking-tighter">
+                  <span className="font-heading text-[11px] font-bold text-primary uppercase tracking-tighter">
                     {skill}
                   </span>
                 </motion.div>

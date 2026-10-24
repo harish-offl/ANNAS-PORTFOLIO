@@ -18,11 +18,11 @@ export function AchievementsSection() {
           className="mx-auto max-w-2xl text-center mb-12 overflow-guard"
         >
           <span className="sticky-note tilt-2">
-            <span className="font-space text-xs font-bold text-foreground uppercase tracking-tighter">
+            <span className="font-heading text-xs font-bold text-foreground uppercase tracking-tighter">
               THE JOURNEY SO FAR
             </span>
           </span>
-          <h2 className="font-display font-normal leading-[1.05] mt-4 text-display-sm heading-gradient text-balance">
+          <h2 className="font-heading font-bold leading-[1.05] mt-4 text-display-sm heading-gradient text-balance">
             Numbers That Speak.
           </h2>
         </motion.div>
@@ -38,10 +38,10 @@ export function AchievementsSection() {
               whileHover={{ y: -4 }}
               className="paper-card p-6 text-center border-l-4 border-primary overflow-guard"
             >
-              <div className="font-display font-normal text-primary mb-1 tracking-tighter text-3xl md:text-4xl">
+              <div className="font-heading font-bold text-primary mb-1 tracking-tighter text-3xl md:text-4xl">
                 {metric.value}
               </div>
-              <span className="font-space text-xs font-bold text-muted-foreground/80 uppercase tracking-widest">
+              <span className="text-xs font-semibold text-muted-foreground/80 uppercase tracking-widest">
                 {metric.label}
               </span>
             </motion.div>

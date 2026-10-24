@@ -51,20 +51,22 @@ export function Navbar() {
               : "border-transparent"
           }`}
         >
+          {/* Logo - Space Grotesk */}
           <a
             href="#home"
             className="group flex items-center gap-2.5"
           >
             <span
-              className={`grid h-9 w-9 place-items-center rounded-xl border border-border/60 bg-card font-display text-sm font-bold text-foreground tracking-tighter group-hover:rotate-[-2deg] transition-transform duration-300`}
+              className={`grid h-9 w-9 place-items-center rounded-xl border border-border/60 bg-card font-heading text-sm font-bold text-foreground tracking-tighter group-hover:rotate-[-2deg] transition-transform duration-300`}
             >
               {profile.monogram}
             </span>
-            <span className="font-space text-xs font-semibold tracking-widest uppercase text-foreground">
+            <span className="font-heading text-xs font-semibold tracking-widest uppercase text-foreground">
               {profile.name}
             </span>
           </a>
 
+          {/* Desktop Navigation - Inter Medium */}
           <div className="hidden items-center gap-1 md:flex">
             {navLinks.map((link) => (
               <a
@@ -82,6 +84,7 @@ export function Navbar() {
           </div>
 
           <div className="flex items-center gap-2">
+            {/* Theme toggle - Inter */}
             <button
               type="button"
               onClick={toggleTheme}
@@ -95,6 +98,7 @@ export function Navbar() {
               )}
             </button>
 
+            {/* CTA Button - Space Grotesk Bold */}
             <a
               href="#contact"
               className="hidden sm:inline-flex items-center gap-1.5 rounded-xl bg-primary px-4 py-2 text-xs font-bold text-primary-foreground uppercase transition-transform hover:scale-105"
@@ -103,6 +107,7 @@ export function Navbar() {
               <ArrowUpRight className="h-3 w-3" />
             </a>
 
+            {/* Mobile menu toggle */}
             <button
               type="button"
               onClick={() => setOpen((v) => !v)}
@@ -116,6 +121,7 @@ export function Navbar() {
           </div>
         </nav>
 
+        {/* Mobile Navigation - Inter Medium */}
         <AnimatePresence>
           {open && (
             <motion.div

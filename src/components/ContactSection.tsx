@@ -74,15 +74,15 @@ export function ContactSection() {
         >
           <div className="flex items-center justify-center gap-2 mb-6">
             <span className="sticky-note tilt-n3">
-              <span className="font-space text-xs font-bold text-foreground uppercase tracking-tighter">
+              <span className="font-heading text-xs font-bold text-foreground uppercase tracking-tighter">
                 LET&apos;S TALK
               </span>
             </span>
           </div>
-          <h2 className="font-display font-normal leading-[1.05] text-display-sm heading-gradient mb-6 text-balance">
+          <h2 className="font-heading font-bold leading-[1.05] text-display-sm heading-gradient mb-6 text-balance">
             Let&apos;s Make Something Good.
           </h2>
-          <p className="text-muted-foreground text-sm md:text-base max-w-2xl mx-auto leading-relaxed text-balance">
+          <p className="text-muted-foreground text-sm md:text-base max-w-2xl mx-auto font-body leading-relaxed text-balance">
             Have a website idea, a brand that needs better content, or a digital
             problem worth solving? Let&apos;s talk about it.
           </p>
@@ -99,7 +99,7 @@ export function ContactSection() {
             <div className="paper-card p-6 sm:p-8 overflow-guard">
               <div className="space-y-6 overflow-guard">
                 <div>
-                  <h3 className="font-space text-lg font-bold text-foreground mb-2">
+                  <h3 className="font-heading text-lg font-bold text-foreground mb-2">
                     Get in Touch
                   </h3>
                   <p className="text-sm text-muted-foreground/90 leading-relaxed">
@@ -159,7 +159,7 @@ export function ContactSection() {
                 </div>
 
                 <div className="pt-4 border-t border-border/60 overflow-guard">
-                  <p className="mb-3 text-xs font-space font-bold uppercase tracking-widest text-muted-foreground">
+                  <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
                     Find me online
                   </p>
                   <div className="flex flex-wrap gap-3 overflow-guard">
@@ -180,32 +180,32 @@ export function ContactSection() {
               </div>
             </div>
 
-            <div className="paper-card p-6 sm:p-8 overflow-guard">
+            <div className="paper-card overflow-guard border-[#ff6b00]/45 bg-[#3b3027] p-6 shadow-[0_16px_40px_rgba(255,107,0,0.10)] hover:border-[#ff6b00]/70 hover:shadow-[0_18px_44px_rgba(255,107,0,0.16)] sm:p-8">
               <div className="flex items-center gap-2 mb-1 overflow-guard">
-                <div className="grid h-9 w-9 place-items-center rounded-xl bg-primary text-primary-foreground shrink-0">
+                <div className="grid h-9 w-9 place-items-center rounded-xl bg-[#ff6b00] text-white shrink-0">
                   <Mail className="h-4 w-4" />
                 </div>
-                <span className="font-display text-lg font-bold text-foreground">
+                <span className="font-heading text-lg font-bold text-[#fff2e5]">
                   Arrise Digital
                 </span>
               </div>
-              <p className="text-xs font-space font-bold text-primary-foreground uppercase tracking-widest mb-6">
+              <p className="text-xs font-semibold text-[#ff8a3d] uppercase tracking-widest mb-6">
                 Partners in Progress
               </p>
-              <p className="text-sm text-muted-foreground/90 leading-relaxed mb-6">
+              <p className="text-sm text-[#d5c7ba] leading-relaxed mb-6">
                 A creative technology agency working across web development,
                 content production, and automation. Based in Madurai, India.
               </p>
               <div className="space-y-4 overflow-guard">
-                <div className="flex items-center gap-3 text-sm font-space overflow-guard">
-                  <span className="text-muted-foreground">Portfolio:</span>
+                <div className="flex items-center gap-3 text-sm font-body overflow-guard">
+                  <span className="text-[#d5c7ba]">Website:</span>
                   <a
-                    href={profile.portfolio}
+                    href={profile.agencyWebsite}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-primary underline-offset-2 hover:underline truncate"
+                    className="text-[#ff6b00] underline-offset-2 hover:underline truncate"
                   >
-                    {profile.portfolio}
+                    {profile.agencyWebsite.replace(/\/$/, "")}
                   </a>
                 </div>
               </div>
@@ -222,7 +222,7 @@ export function ContactSection() {
           >
             <div className="grid gap-4 sm:grid-cols-2 overflow-guard">
               <div>
-                <label className="mb-2 block text-[10px] font-space font-bold text-muted-foreground uppercase tracking-widest">
+                <label className="mb-2 block text-[10px] font-semibold text-muted-foreground uppercase tracking-widest">
                   Your Name
                 </label>
                 <input
@@ -235,7 +235,7 @@ export function ContactSection() {
                 />
               </div>
               <div>
-                <label className="mb-2 block text-[10px] font-space font-bold text-muted-foreground uppercase tracking-widest">
+                <label className="mb-2 block text-[10px] font-semibold text-muted-foreground uppercase tracking-widest">
                   Your Email
                 </label>
                 <input
@@ -249,7 +249,7 @@ export function ContactSection() {
               </div>
             </div>
             <div className="overflow-guard">
-              <label className="mb-2 block text-[10px] font-space font-bold text-muted-foreground uppercase tracking-widest">
+              <label className="mb-2 block text-[10px] font-semibold text-muted-foreground uppercase tracking-widest">
                 Project Type
               </label>
               <select
@@ -266,7 +266,7 @@ export function ContactSection() {
               </select>
             </div>
             <div className="overflow-guard">
-              <label className="mb-2 block text-[10px] font-space font-bold text-muted-foreground uppercase tracking-widest">
+              <label className="mb-2 block text-[10px] font-semibold text-muted-foreground uppercase tracking-widest">
                 Budget Range
               </label>
               <select
@@ -283,7 +283,7 @@ export function ContactSection() {
               </select>
             </div>
             <div className="overflow-guard">
-              <label className="mb-2 block text-[10px] font-space font-bold text-muted-foreground uppercase tracking-widest">
+              <label className="mb-2 block text-[10px] font-semibold text-muted-foreground uppercase tracking-widest">
                 Project Description
               </label>
               <textarea
@@ -298,10 +298,10 @@ export function ContactSection() {
             <button
               type="submit"
               disabled={status === "loading"}
-              className={`w-full rounded-xl px-6 py-3 text-xs font-display font-bold text-primary-foreground uppercase tracking-widest transition-all disabled:opacity-50 ${
+              className={`w-full rounded-xl px-6 py-3 text-xs font-heading font-bold text-[#323232] uppercase tracking-widest transition-all disabled:opacity-50 ${
                 status === "loading"
                   ? "bg-secondary text-secondary-foreground cursor-not-allowed"
-                  : "bg-primary hover:bg-orange-400 shadow-sm hover:shadow-md hover:-translate-y-0.5"
+                  : "bg-primary hover:bg-yellow-400 shadow-sm hover:shadow-md hover:-translate-y-0.5"
               }`}
             >
               {status === "loading" ? (
@@ -319,7 +319,7 @@ export function ContactSection() {
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="mt-2 p-3 rounded-lg bg-green-100 border border-green-200 text-green-900 text-[11px] font-space font-bold flex items-center gap-2"
+                className="mt-2 p-3 rounded-lg bg-green-100 border border-green-200 text-green-900 text-[11px] font-semibold flex items-center gap-2"
               >
                 <CheckCircle2 className="h-4 w-4" />
                 Enquiry sent successfully.
@@ -329,7 +329,7 @@ export function ContactSection() {
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="mt-2 p-3 rounded-lg bg-red-100 border border-red-200 text-red-900 text-[11px] font-space font-bold flex items-center gap-2"
+                className="mt-2 p-3 rounded-lg bg-red-100 border border-red-200 text-red-900 text-[11px] font-semibold flex items-center gap-2"
               >
                 <AlertCircle className="h-4 w-4" />
                 Please fill in all required fields.

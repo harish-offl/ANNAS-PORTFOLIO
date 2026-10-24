@@ -46,30 +46,67 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
-        display: ["var(--font-sans)", "system-ui", "sans-serif"],
-        grotesk: ["var(--font-sans)", "system-ui", "sans-serif"],
-        space: ["var(--font-sans)", "system-ui", "sans-serif"],
-        caveat: ["var(--font-caveat)", "cursive"],
-        mono: ["var(--font-mono)", "monospace"],
+        /* Body text - Inter */
+        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        body: ["var(--font-inter)", "system-ui", "sans-serif"],
+        /* Heading text - Space Grotesk */
+        display: ["var(--font-space-grotesk)", "system-ui", "sans-serif"],
+        grotesk: ["var(--font-space-grotesk)", "system-ui", "sans-serif"],
+        space: ["var(--font-space-grotesk)", "system-ui", "sans-serif"],
+        heading: ["var(--font-space-grotesk)", "system-ui", "sans-serif"],
       },
       fontSize: {
-        "display-xs": [
-            "clamp(1.25rem, 2.5vw, 1.75rem)",
-          { lineHeight: "1.1", letterSpacing: "-0.02em" },
+        /* Hero H1 - Space Grotesk Bold 700 */
+        "hero-name": [
+          "clamp(3rem, 8vw, 7rem)",
+          { lineHeight: "0.95", letterSpacing: "-0.035em", fontWeight: "700" },
         ],
-        "display-sm": [
-            "clamp(1.75rem, 3.5vw, 2.75rem)",
-          { lineHeight: "1.05", letterSpacing: "-0.022em" },
-        ],
-        "display-md": [
-            "clamp(2rem, 4.5vw, 3.5rem)",
-          { lineHeight: "1.04", letterSpacing: "-0.025em" },
-        ],
+        /* Main display - Space Grotesk Bold 700 */
         "display-lg": [
-            "clamp(2.25rem, 6vw, 4.5rem)",
-          { lineHeight: "0.98", letterSpacing: "-0.03em" },
+          "clamp(2.75rem, 7vw, 6rem)",
+          { lineHeight: "0.98", letterSpacing: "-0.03em", fontWeight: "700" },
         ],
+        /* Section headings H2 - Space Grotesk Bold 700 */
+        "display-md": [
+          "clamp(2rem, 4.5vw, 3.5rem)",
+          { lineHeight: "1.04", letterSpacing: "-0.025em", fontWeight: "700" },
+        ],
+        /* H3 section titles - Space Grotesk Semibold 600 */
+        "display-sm": [
+          "clamp(1.75rem, 3.5vw, 2.75rem)",
+          { lineHeight: "1.05", letterSpacing: "-0.022em", fontWeight: "600" },
+        ],
+        /* Small section titles - Space Grotesk Semibold 600 */
+        "display-xs": [
+          "clamp(1.25rem, 2.5vw, 1.75rem)",
+          { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "600" },
+        ],
+        /* Section title H3 - Space Grotesk Semibold 600 */
+        "section-title": [
+          "clamp(1.5rem, 3vw, 2rem)",
+          { lineHeight: "1.2", letterSpacing: "-0.02em", fontWeight: "600" },
+        ],
+      },
+      fontWeight: {
+        /* Body text weights */
+        body: "400",
+        /* Navigation and labels */
+        medium: "500",
+        /* Semibold for emphasis */
+        semibold: "600",
+        /* Bold for headings and buttons */
+        bold: "700",
+      },
+      lineHeight: {
+        body: "1.7",
+        "body-relaxed": "1.8",
+        heading: "0.98",
+        "heading-tight": "1.05",
+      },
+      letterSpacing: {
+        heading: "-0.03em",
+        "heading-tight": "-0.02em",
+        "heading-tighter": "-0.025em",
       },
       keyframes: {
         "gradient-pan": {

@@ -24,10 +24,10 @@ export function VideoEditingPortfolioSection() {
             </span>
             <div>
               <p className="eyebrow">Video editing portfolio</p>
-              <h2 className="mt-2 font-display text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
+              <h2 className="mt-2 font-heading text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
                 Stories told through video.
               </h2>
-              <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted-foreground">
+              <p className="mt-2 max-w-xl text-sm font-body leading-relaxed text-muted-foreground">
                 Browse my video editing work and creative portfolio materials
                 in Google Drive.
               </p>

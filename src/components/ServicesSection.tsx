@@ -90,15 +90,15 @@ export function ServicesSection() {
         >
           <div className="flex items-center justify-center gap-2 mb-6">
             <span className="sticky-note tilt-n3">
-              <span className="font-space text-xs font-bold text-foreground uppercase tracking-tighter">
+              <span className="font-heading text-xs font-bold text-foreground uppercase tracking-tighter">
                 WHAT I DO
               </span>
             </span>
           </div>
-          <h2 className="font-display font-normal leading-[1.05] text-display-sm heading-gradient mb-6 text-balance">
+          <h2 className="font-heading font-bold leading-[1.05] text-display-sm heading-gradient mb-6 text-balance">
             What I Bring to the Table.
           </h2>
-          <p className="text-muted-foreground text-sm md:text-base max-w-2xl mx-auto leading-relaxed text-balance">
+          <p className="text-muted-foreground text-sm md:text-base max-w-2xl mx-auto font-body leading-relaxed text-balance">
             From code to camera, I work across disciplines to help ideas become
             reality.
           </p>
@@ -122,21 +122,21 @@ export function ServicesSection() {
                 <span className={`grid h-10 w-10 place-items-center rounded-xl ${service.iconBg} shadow-sm shrink-0`}>
                   <service.icon className="h-5 w-5" />
                 </span>
-                <span className="font-display text-xs font-bold text-foreground uppercase tracking-widest">
+                <span className="font-heading text-xs font-bold text-foreground uppercase tracking-widest">
                   #{service.number}
                 </span>
               </div>
-              <h3 className="font-space text-lg font-bold text-foreground mb-2">
+              <h3 className="font-heading text-lg font-bold text-foreground mb-2">
                 {service.title}
               </h3>
-              <p className="text-sm font-space text-muted-foreground/90 leading-relaxed mb-6">
+              <p className="text-sm font-body text-muted-foreground/90 leading-relaxed mb-6">
                 {service.description}
               </p>
               <div className="flex flex-wrap gap-2 overflow-guard">
                 {service.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="inline-block px-2.5 py-0.5 rounded border border-border/60 bg-card/50 text-[10px] font-space font-bold text-muted-foreground/80 uppercase"
+                    className="inline-block px-2.5 py-0.5 rounded border border-border/60 bg-card/50 text-[10px] font-semibold text-muted-foreground/80 uppercase"
                   >
                     {tag}
                   </span>
@@ -148,7 +148,7 @@ export function ServicesSection() {
 
         <div className="mt-16 flex justify-center overflow-guard">
           <span className="sticky-note tilt-2">
-            <span className="font-space text-xs font-bold text-foreground uppercase tracking-tighter">
+            <span className="font-heading text-xs font-bold text-foreground uppercase tracking-tighter">
               Available for freelance & remote work
             </span>
           </span>

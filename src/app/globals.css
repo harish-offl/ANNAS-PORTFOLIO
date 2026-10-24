@@ -21,41 +21,82 @@
     overflow-wrap: break-word;
     overflow-x: hidden;
     line-height: 1.7;
+    /* Ensure Inter is used for body text */
+    font-family: var(--font-inter), system-ui, sans-serif;
+    font-weight: 400;
+  }
+
+  /* Typography base styles */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-space-grotesk), system-ui, sans-serif;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  /* Ensure body text uses Inter */
+  p, span, div, li, td, th {
+    font-family: var(--font-inter), system-ui, sans-serif;
   }
 
   :root {
-    --background: 0 0% 98%;
-    --foreground: 0 0% 9%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 9%;
-    --primary: 22 100% 39%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 0 0% 94%;
-    --secondary-foreground: 0 0% 15%;
-    --muted: 0 0% 92%;
-    --muted-foreground: 0 0% 38%;
-    --accent: 22 100% 39%;
-    --accent-foreground: 0 0% 100%;
-    --border: 0 0% 86%;
-    --ring: 22 100% 50%;
+    --background: 20 0% 20%;
+    --foreground: 0 0% 96%;
+    --card: 25 0% 25%;
+    --card-foreground: 0 0% 96%;
+    --primary: 53 100% 50%;
+    --primary-foreground: 0 0% 10%;
+    --secondary: 20 0% 22%;
+    --secondary-foreground: 0 0% 88%;
+    --muted: 20 0% 30%;
+    --muted-foreground: 0 0% 60%;
+    --accent: 53 100% 50%;
+    --accent-foreground: 0 0% 10%;
+    --border: 20 0% 30%;
+    --ring: 53 100% 50%;
     --radius: 1rem;
+
+    /* Extended color palette */
+    --deep-charcoal: 0 0% 15%;
+    --elevated-gray: 0 0% 26%;
+    --pure-white: 0 0% 100%;
+    --soft-gray: 0 0% 74%;
+
+    /* Typography tokens */
+    --font-heading: var(--font-space-grotesk), system-ui, sans-serif;
+    --font-body: var(--font-inter), system-ui, sans-serif;
+    --heading-tracking: -0.03em;
+    --body-line-height: 1.7;
+    --heading-line-height: 0.98;
   }
 
   .dark {
-    --background: 0 0% 5%;
+    --background: 20 0% 20%;
     --foreground: 0 0% 96%;
-    --card: 0 0% 11%;
+    --card: 25 0% 25%;
     --card-foreground: 0 0% 96%;
-    --primary: 25 100% 50%;
-    --primary-foreground: 0 0% 5%;
-    --secondary: 0 0% 9%;
+    --primary: 53 100% 50%;
+    --primary-foreground: 0 0% 10%;
+    --secondary: 20 0% 22%;
     --secondary-foreground: 0 0% 88%;
-    --muted: 0 0% 12%;
-    --muted-foreground: 0 0% 70%;
-    --accent: 25 100% 50%;
-    --accent-foreground: 0 0% 5%;
-    --border: 0 0% 20%;
-    --ring: 25 100% 50%;
+    --muted: 20 0% 30%;
+    --muted-foreground: 0 0% 60%;
+    --accent: 53 100% 50%;
+    --accent-foreground: 0 0% 10%;
+    --border: 20 0% 30%;
+    --ring: 53 100% 50%;
+
+    /* Extended color palette */
+    --deep-charcoal: 0 0% 15%;
+    --elevated-gray: 0 0% 26%;
+    --pure-white: 0 0% 100%;
+    --soft-gray: 0 0% 74%;
+
+    /* Typography tokens */
+    --font-heading: var(--font-space-grotesk), system-ui, sans-serif;
+    --font-body: var(--font-inter), system-ui, sans-serif;
+    --heading-tracking: -0.03em;
+    --body-line-height: 1.7;
+    --heading-line-height: 0.98;
   }
 
   * {
@@ -104,7 +145,7 @@
 
   /* Premium gradient typography */
   .text-gradient {
-    @apply bg-gradient-to-r from-primary to-orange-300 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-primary to-yellow-200 bg-clip-text text-transparent;
   }
 
   .text-gradient-foil {
@@ -265,6 +306,118 @@
   .polaroid::before {
     content: "";
     @apply absolute inset-0 rounded-2xl border border-border/40 pointer-events-none;
+  }
+
+  /* Premium Typography Component Classes */
+
+  /* Heading styles - Space Grotesk */
+  .heading-hero {
+    font-family: var(--font-space-grotesk), system-ui, sans-serif;
+    font-size: clamp(2.75rem, 7vw, 6rem);
+    font-weight: 700;
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+  }
+
+  .heading-section {
+    font-family: var(--font-space-grotesk), system-ui, sans-serif;
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.04;
+    letter-spacing: -0.025em;
+  }
+
+  .heading-subsection {
+    font-family: var(--font-space-grotesk), system-ui, sans-serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  .heading-card {
+    font-family: var(--font-space-grotesk), system-ui, sans-serif;
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
+  /* Body text styles - Inter */
+  .body-text {
+    font-family: var(--font-inter), system-ui, sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.7;
+  }
+
+  .body-text-lg {
+    font-family: var(--font-inter), system-ui, sans-serif;
+    font-size: 1.125rem;
+    font-weight: 400;
+    line-height: 1.8;
+  }
+
+  .body-text-sm {
+    font-family: var(--font-inter), system-ui, sans-serif;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  /* Label and metadata styles - Inter Medium/Semibold */
+  .label-text {
+    font-family: var(--font-inter), system-ui, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .label-text-sm {
+    font-family: var(--font-inter), system-ui, sans-serif;
+    font-size: 0.625rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+
+  /* Navigation and UI elements */
+  .nav-text {
+    font-family: var(--font-inter), system-ui, sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .button-text {
+    font-family: var(--font-inter), system-ui, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* Eyebrow text - small labels above headings */
+  .eyebrow {
+    @apply sticky-note tilt-n3;
+    font-family: var(--font-inter), system-ui, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* Accent/highlight text in yellow */
+  .text-accent {
+    color: hsl(var(--primary));
+  }
+
+  /* Gradient heading text */
+  .heading-gradient {
+    background: linear-gradient(135deg, hsl(var(--foreground)) 0%, hsl(var(--foreground) / 0.85) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   /* Z-index scale */

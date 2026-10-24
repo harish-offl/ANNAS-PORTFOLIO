@@ -58,15 +58,15 @@ export function CreativeShowcase() {
         <div className="mx-auto max-w-3xl">
           <div className="flex flex-col items-center gap-5 sm:flex-row sm:items-center sm:justify-between sm:gap-6 mb-8 overflow-guard">
             <span className="sticky-note tilt-n2 shrink-0">
-              <span className="font-space text-xs font-bold text-foreground uppercase tracking-tighter">
+              <span className="font-heading text-xs font-bold text-foreground uppercase tracking-tighter">
                 BUILT WITH CURIOSITY
               </span>
             </span>
-            <h2 className="font-display font-normal leading-[1.05] text-display-sm heading-gradient text-center sm:text-left text-balance">
+            <h2 className="font-heading font-bold leading-[1.05] text-display-sm heading-gradient text-center sm:text-left text-balance">
               A Little Bit of Everything.
             </h2>
           </div>
-          <p className="mx-auto max-w-lg text-muted-foreground text-center text-sm md:text-base text-balance leading-relaxed">
+          <p className="mx-auto max-w-lg text-muted-foreground text-center text-sm md:text-base text-balance font-body leading-relaxed">
             A curated collage of visual experiments — website mockups, mobile
             interfaces, video timelines, brand identities, and AI concepts.
           </p>
@@ -92,10 +92,10 @@ export function CreativeShowcase() {
                   <item.icon className="h-8 w-8 text-muted-foreground/60 group-hover:text-foreground transition-colors" />
                 </div>
                 <div className="mt-3">
-                  <span className="block text-[10px] font-space font-bold uppercase tracking-widest text-muted-foreground/70">
+                  <span className="block text-[10px] font-semibold uppercase tracking-widest text-muted-foreground/70">
                     {item.label}
                   </span>
-                  <span className="block text-xs font-display text-foreground mt-0.5">
+                  <span className="block text-xs font-heading text-foreground mt-0.5">
                     {item.title}
                   </span>
                 </div>

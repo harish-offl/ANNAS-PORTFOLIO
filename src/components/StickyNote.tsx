@@ -70,16 +70,16 @@ export function SectionHeading({
         }`}
       >
         <span className="sticky-note tilt-n3 shrink-0">
-          <span className="font-space text-xs font-bold text-foreground uppercase tracking-tighter">
+          <span className="font-heading text-xs font-bold text-foreground uppercase tracking-tighter">
             {eyebrow}
           </span>
         </span>
       </div>
-      <h2 className="font-display font-normal leading-[1.05] text-display-sm heading-gradient mb-6 text-balance">
+      <h2 className="font-heading font-bold leading-[1.05] text-display-sm heading-gradient mb-6 text-balance">
         {title}
       </h2>
       {description ? (
-        <p className="text-muted-foreground text-sm md:text-base max-w-2xl mx-auto leading-relaxed text-balance">
+        <p className="text-muted-foreground text-sm md:text-base max-w-2xl mx-auto font-body leading-relaxed text-balance">
           {description}
         </p>
       ) : null}

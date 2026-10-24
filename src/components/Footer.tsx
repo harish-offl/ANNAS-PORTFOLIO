@@ -11,20 +11,20 @@ export function Footer() {
         <div className="grid grid-cols-2 items-center gap-x-4 gap-y-5 pb-10 sm:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] sm:gap-8 overflow-guard">
           <div className="flex items-center gap-2.5 min-w-0">
             <span
-              className="grid h-9 w-9 place-items-center rounded-xl border border-border/60 bg-card font-display text-xs font-bold text-foreground tracking-tighter shrink-0"
+              className="grid h-9 w-9 place-items-center rounded-xl border border-border/60 bg-card font-heading text-xs font-bold text-foreground tracking-tighter shrink-0"
             >
               {profile.monogram}
             </span>
-            <span className="font-space text-xs font-bold tracking-widest uppercase text-foreground truncate">
+            <span className="font-heading text-xs font-bold tracking-widest uppercase text-foreground truncate">
               {profile.name}
             </span>
           </div>
-          <p className="col-span-2 text-center text-[11px] font-space text-muted-foreground/80 leading-relaxed text-balance sm:col-span-1 sm:justify-self-center">
+          <p className="col-span-2 text-center text-[11px] font-body text-muted-foreground/80 leading-relaxed text-balance sm:col-span-1 sm:justify-self-center">
             Designed with curiosity. Built with purpose.
           </p>
           <a
             href="#home"
-            className="inline-flex shrink-0 items-center gap-1.5 justify-self-end rounded-lg border border-border/60 bg-card px-3 py-1.5 text-[10px] font-space font-bold text-muted-foreground uppercase transition-colors hover:bg-secondary hover:text-foreground sm:col-start-3"
+            className="inline-flex shrink-0 items-center gap-1.5 justify-self-end rounded-lg border border-border/60 bg-card px-3 py-1.5 text-[10px] font-semibold text-muted-foreground uppercase transition-colors hover:bg-secondary hover:text-foreground sm:col-start-3"
           >
             Back to top
             <ArrowUp className="h-3 w-3" />
@@ -49,7 +49,7 @@ export function Footer() {
                 ].map((word, i) => (
                   <span
                     key={`${word}-${i}`}
-                    className="flex items-center gap-3 text-[10px] font-space font-bold text-muted-foreground/60 uppercase tracking-widest shrink-0 whitespace-nowrap"
+                    className="flex items-center gap-3 text-[10px] font-semibold text-muted-foreground/60 uppercase tracking-widest shrink-0 whitespace-nowrap"
                   >
                     {word}
                     <span className="h-1 w-1 rounded-full bg-primary/60" />
@@ -60,7 +60,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-between gap-4 py-8 text-[10px] font-space text-muted-foreground/60 sm:flex-row overflow-guard">
+        <div className="flex flex-col items-center justify-between gap-4 py-8 text-[10px] font-body text-muted-foreground/60 sm:flex-row overflow-guard">
           <p className="text-center sm:text-left">
             © {new Date().getFullYear()} {profile.name}. All rights reserved.
           </p>
