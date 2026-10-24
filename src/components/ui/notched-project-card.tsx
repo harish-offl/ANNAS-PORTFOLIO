@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import Image, { type ImageLoaderProps } from "next/image";
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -56,13 +56,6 @@ const DISC = 64; // the arrow disc, px
 const BLOCK = 80; // the notch block, px (radius = BLOCK - DISC / 2)
 const FILLET = 28; // the curve where the cut meets the cover's edges, px
 
-function unsplashImageLoader({ src, width, quality }: ImageLoaderProps) {
-  const url = new URL(src);
-  url.searchParams.set("w", String(width));
-  if (quality) url.searchParams.set("q", String(quality));
-  return url.toString();
-}
-
 export function NotchedProjectCard({
   href,
   title,
@@ -101,8 +94,6 @@ export function NotchedProjectCard({
         <div className="relative aspect-[3/2] overflow-hidden rounded-[28px] bg-muted">
           <Image
             src={image}
-            loader={unsplashImageLoader}
-            quality={85}
             fill
             sizes="(max-width: 767px) calc(100vw - 36px), (max-width: 1199px) 50vw, 25vw"
             alt={screen ? "" : imageAlt}

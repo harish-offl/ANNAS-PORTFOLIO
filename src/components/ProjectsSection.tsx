@@ -7,31 +7,31 @@ import { projects } from "@/lib/data";
 
 const projectImages: Record<string, { src: string; alt: string }> = {
   "bangles-by-beauty": {
-    src: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=1200&q=85",
+    src: "/projects/bangles-by-beauty.webp",
     alt: "Gold jewellery displayed on a dark surface",
   },
   "smp-food-products": {
-    src: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1200&q=85",
+    src: "/projects/smp-food-products.webp",
     alt: "Freshly baked bread arranged for a food product display",
   },
   "arrise-digital": {
-    src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=85",
+    src: "/projects/arrise-digital.webp",
     alt: "Analytics dashboard on a laptop screen",
   },
   "vaigai-namma-taxi": {
-    src: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=1200&q=85",
+    src: "/projects/vaigai-namma-taxi.webp",
     alt: "Car ready for a journey",
   },
   focura: {
-    src: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=85",
+    src: "/projects/focura.webp",
     alt: "Students collaborating around a desk during a project session",
   },
   "rml-gate-management": {
-    src: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=85",
+    src: "/projects/rml-gate-management.webp",
     alt: "Team reviewing workflow dashboards on a large screen",
   },
   "personal-portfolio": {
-    src: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=85",
+    src: "/projects/personal-portfolio.webp",
     alt: "Creative workspace with laptop and design materials",
   },
 };
