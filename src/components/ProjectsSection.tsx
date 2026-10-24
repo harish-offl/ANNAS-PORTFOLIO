@@ -5,48 +5,34 @@ import { motion } from "framer-motion";
 import { NotchedProjectCard } from "@/components/ui/notched-project-card";
 import { projects } from "@/lib/data";
 
-const projectImages: Record<string, { src: string; alt: string; width: number; height: number }> = {
+const projectImages: Record<string, { src: string; alt: string }> = {
   "bangles-by-beauty": {
     src: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=1200&q=85",
     alt: "Gold jewellery displayed on a dark surface",
-    width: 1200,
-    height: 900,
   },
   "smp-food-products": {
     src: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1200&q=85",
     alt: "Freshly baked bread arranged for a food product display",
-    width: 1200,
-    height: 900,
   },
   "arrise-digital": {
     src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=85",
     alt: "Analytics dashboard on a laptop screen",
-    width: 1200,
-    height: 900,
   },
   "vaigai-namma-taxi": {
     src: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=1200&q=85",
     alt: "Car ready for a journey",
-    width: 1200,
-    height: 900,
   },
   focura: {
     src: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=85",
     alt: "Students collaborating around a desk during a project session",
-    width: 1200,
-    height: 900,
   },
   "rml-gate-management": {
     src: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=85",
     alt: "Team reviewing workflow dashboards on a large screen",
-    width: 1200,
-    height: 900,
   },
   "personal-portfolio": {
     src: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=85",
     alt: "Creative workspace with laptop and design materials",
-    width: 1200,
-    height: 900,
   },
 };
 
@@ -114,8 +100,6 @@ export function ProjectsSection() {
                   description={project.description}
                   image={image.src}
                   imageAlt={image.alt}
-                  imageWidth={image.width}
-                  imageHeight={image.height}
                   badge={project.year}
                   tags={[
                     statusLabels[project.status],

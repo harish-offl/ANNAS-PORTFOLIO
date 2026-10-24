@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import Image from "next/image";
+import Image, { type ImageLoaderProps } from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -32,8 +32,6 @@ export interface NotchedProjectCardProps {
   /** cover photograph */
   image: string;
   imageAlt?: string;
-  imageWidth?: number;
-  imageHeight?: number;
   /** a pill at the top of the cover, e.g. the year */
   badge?: string;
   tags?: string[];
@@ -58,14 +56,19 @@ const DISC = 64; // the arrow disc, px
 const BLOCK = 80; // the notch block, px (radius = BLOCK - DISC / 2)
 const FILLET = 28; // the curve where the cut meets the cover's edges, px
 
+function unsplashImageLoader({ src, width, quality }: ImageLoaderProps) {
+  const url = new URL(src);
+  url.searchParams.set("w", String(width));
+  if (quality) url.searchParams.set("q", String(quality));
+  return url.toString();
+}
+
 export function NotchedProjectCard({
   href,
   title,
   description,
   image,
   imageAlt = "",
-  imageWidth,
-  imageHeight,
   badge,
   tags = [],
   screen,
@@ -98,9 +101,11 @@ export function NotchedProjectCard({
         <div className="relative aspect-[3/2] overflow-hidden rounded-[28px] bg-muted">
           <Image
             src={image}
-            alt={screen ? "" : imageAlt}
+            loader={unsplashImageLoader}
+            quality={85}
             fill
-            sizes="(max-width: 767px) 100vw, (max-width: 1199px) 50vw, 25vw"
+            sizes="(max-width: 767px) calc(100vw - 36px), (max-width: 1199px) 50vw, 25vw"
+            alt={screen ? "" : imageAlt}
             className={cn(
               "absolute inset-0 h-full w-full object-cover",
               tone,
@@ -116,6 +121,7 @@ export function NotchedProjectCard({
               alt={screen.alt}
               width={720}
               height={480}
+              unoptimized
               className={cn(
                 "absolute bottom-0 right-0 w-[82%] origin-bottom-right drop-shadow-[0_18px_40px_rgba(0,0,0,0.5)] group-hover:scale-[1.07]",
                 tone,
