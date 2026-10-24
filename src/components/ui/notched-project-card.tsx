@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -31,6 +32,8 @@ export interface NotchedProjectCardProps {
   /** cover photograph */
   image: string;
   imageAlt?: string;
+  imageWidth?: number;
+  imageHeight?: number;
   /** a pill at the top of the cover, e.g. the year */
   badge?: string;
   tags?: string[];
@@ -61,6 +64,8 @@ export function NotchedProjectCard({
   description,
   image,
   imageAlt = "",
+  imageWidth,
+  imageHeight,
   badge,
   tags = [],
   screen,
@@ -91,11 +96,11 @@ export function NotchedProjectCard({
       <div className="relative">
         {/* the cover */}
         <div className="relative aspect-[3/2] overflow-hidden rounded-[28px] bg-muted">
-          <img
+          <Image
             src={image}
             alt={screen ? "" : imageAlt}
-            loading="lazy"
-            decoding="async"
+            fill
+            sizes="(max-width: 767px) 100vw, (max-width: 1199px) 50vw, 25vw"
             className={cn(
               "absolute inset-0 h-full w-full object-cover",
               tone,
@@ -106,9 +111,11 @@ export function NotchedProjectCard({
             <div aria-hidden className="absolute inset-0" style={{ backgroundColor: `rgb(0 0 0 / ${dim})` }} />
           )}
           {screen && (
-            <img
+            <Image
               src={screen.src}
               alt={screen.alt}
+              width={720}
+              height={480}
               className={cn(
                 "absolute bottom-0 right-0 w-[82%] origin-bottom-right drop-shadow-[0_18px_40px_rgba(0,0,0,0.5)] group-hover:scale-[1.07]",
                 tone,

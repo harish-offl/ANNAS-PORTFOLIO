@@ -1,25 +1,52 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { NotchedProjectCard } from "@/components/ui/notched-project-card";
 import { projects } from "@/lib/data";
 
-const projectImages: Record<string, { src: string; alt: string }> = {
+const projectImages: Record<string, { src: string; alt: string; width: number; height: number }> = {
   "bangles-by-beauty": {
     src: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=1200&q=85",
     alt: "Gold jewellery displayed on a dark surface",
+    width: 1200,
+    height: 900,
   },
   "smp-food-products": {
     src: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1200&q=85",
     alt: "Freshly baked bread arranged for a food product display",
+    width: 1200,
+    height: 900,
   },
   "arrise-digital": {
     src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=85",
     alt: "Analytics dashboard on a laptop screen",
+    width: 1200,
+    height: 900,
   },
   "vaigai-namma-taxi": {
     src: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=1200&q=85",
     alt: "Car ready for a journey",
+    width: 1200,
+    height: 900,
+  },
+  focura: {
+    src: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=85",
+    alt: "Students collaborating around a desk during a project session",
+    width: 1200,
+    height: 900,
+  },
+  "rml-gate-management": {
+    src: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=85",
+    alt: "Team reviewing workflow dashboards on a large screen",
+    width: 1200,
+    height: 900,
+  },
+  "personal-portfolio": {
+    src: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=85",
+    alt: "Creative workspace with laptop and design materials",
+    width: 1200,
+    height: 900,
   },
 };
 
@@ -30,6 +57,10 @@ const statusLabels = {
 } as const;
 
 export function ProjectsSection() {
+  const [expanded, setExpanded] = useState(false);
+  const visibleProjects = expanded ? projects : projects.slice(0, 4);
+  const hasMoreProjects = projects.length > 4;
+
   return (
     <section
       id="work"
@@ -48,16 +79,16 @@ export function ProjectsSection() {
             Websites built to move ideas forward.
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-sm font-body leading-relaxed text-[#625a45] sm:text-base">
-            A selection of websites and independent projects. Select a card to
-            explore the website.
+            A selection of websites and independent projects. Select a card to explore the website.
           </p>
         </motion.div>
 
-        <div
+        <motion.div
+          layout
           id="website-project-grid"
           className="mx-auto grid w-full grid-cols-1 gap-x-5 gap-y-10 overflow-guard min-[768px]:grid-cols-2 min-[1200px]:grid-cols-4"
         >
-          {projects.slice(0, 4).map((project) => {
+          {visibleProjects.map((project) => {
             const image = projectImages[project.id];
             const isBanglesProject = project.id === "bangles-by-beauty";
             const isSmpProject = project.id === "smp-food-products";
@@ -76,50 +107,65 @@ export function ProjectsSection() {
             if (!project.demoUrl || !image) return null;
 
             return (
-              <NotchedProjectCard
-                key={project.id}
-                href={project.demoUrl}
-                title={project.title}
-                description={project.description}
-                image={image.src}
-                imageAlt={image.alt}
-                badge={project.year}
-                tags={[
-                  statusLabels[project.status],
-                  ...project.tags.slice(0, 1),
-                ]}
-                monochrome
-                surface="#f4e8bf"
-                accent={projectAccent}
-                titleClassName={`min-h-12 text-base sm:text-lg ${
-                  isBanglesProject
-                    ? "text-[#732638]"
-                    : isSmpProject
-                      ? "text-[#8B4D2E]"
-                      : isArriseProject
-                        ? "text-[#FF6B00]"
-                        : isVaigaiProject
-                          ? "text-[#CA8A04]"
-                        : ""
-                }`}
-                descriptionClassName="flex-1 text-xs sm:text-sm"
-                tagClassName={
-                  isBanglesProject
-                    ? "bg-[#732638] text-white"
-                    : isSmpProject
-                      ? "bg-[#8B4D2E] text-white"
-                      : isArriseProject
-                        ? "bg-[#FF6B00] text-[#0D0D0D]"
-                        : isVaigaiProject
-                          ? "bg-[#FACC15] text-[#111111]"
-                        : "bg-[#e8d9a9] text-[#4a3c20]"
-                }
-                className="h-full min-w-0"
-              />
+              <motion.div key={project.id} layout className="min-w-0">
+                <NotchedProjectCard
+                  href={project.demoUrl}
+                  title={project.title}
+                  description={project.description}
+                  image={image.src}
+                  imageAlt={image.alt}
+                  imageWidth={image.width}
+                  imageHeight={image.height}
+                  badge={project.year}
+                  tags={[
+                    statusLabels[project.status],
+                    ...project.tags.slice(0, 1),
+                  ]}
+                  monochrome
+                  surface="#f4e8bf"
+                  accent={projectAccent}
+                  titleClassName={`min-h-12 text-base sm:text-lg ${
+                    isBanglesProject
+                      ? "text-[#732638]"
+                      : isSmpProject
+                        ? "text-[#8B4D2E]"
+                        : isArriseProject
+                          ? "text-[#FF6B00]"
+                          : isVaigaiProject
+                            ? "text-[#CA8A04]"
+                            : ""
+                  }`}
+                  descriptionClassName="flex-1 text-xs sm:text-sm"
+                  tagClassName={
+                    isBanglesProject
+                      ? "bg-[#732638] text-white"
+                      : isSmpProject
+                        ? "bg-[#8B4D2E] text-white"
+                        : isArriseProject
+                          ? "bg-[#FF6B00] text-[#0D0D0D]"
+                          : isVaigaiProject
+                            ? "bg-[#FACC15] text-[#111111]"
+                            : "bg-[#e8d9a9] text-[#4a3c20]"
+                  }
+                  className="h-full min-w-0"
+                />
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
 
+        {hasMoreProjects && (
+          <div className="mt-10 flex justify-center">
+            <button
+              type="button"
+              onClick={() => setExpanded((current) => !current)}
+              aria-expanded={expanded}
+              className="inline-flex items-center justify-center rounded-full border border-[#3a2d19]/25 bg-[#f8f1d6] px-5 py-2.5 text-sm font-semibold text-[#292416] transition-colors hover:bg-[#f1e4b5] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#292416] focus-visible:ring-offset-2 focus-visible:ring-offset-[#f4e8bf]"
+            >
+              {expanded ? "Show Less" : "View All Projects"}
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
