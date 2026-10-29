@@ -168,7 +168,7 @@ export function HeroSection() {
                 <span className="h-px flex-1 bg-line" aria-hidden="true" />
               </div>
 
-              <div className="grid gap-2.5 sm:grid-cols-2">
+              <div className="grid gap-2.5 sm:grid-cols-3">
                 {connectLinks.map((link) => {
                   const Icon = connectIconMap[link.icon];
                   const external = link.external
