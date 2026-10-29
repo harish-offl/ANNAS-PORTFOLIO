@@ -1,4 +1,5 @@
 import { Navbar } from "@/components/Navbar";
+import { CurvedBanner } from "@/components/CurvedBanner";
 import { HeroSection } from "@/components/HeroSection";
 import { ProjectsSection } from "@/components/ProjectsSection";
 import { CreativeWorkSection } from "@/components/CreativeWorkSection";
