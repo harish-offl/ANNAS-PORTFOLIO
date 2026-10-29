@@ -168,12 +168,22 @@ export function HeroSection() {
                 <span className="h-px flex-1 bg-line" aria-hidden="true" />
               </div>
 
-              <div className="grid gap-2.5 sm:grid-cols-3">
+              <div className="grid gap-2.5 sm:grid-cols-2">
                 {connectLinks.map((link) => {
                   const Icon = connectIconMap[link.icon];
                   const external = link.external
                     ? { target: "_blank", rel: "noopener noreferrer" }
                     : {};
+
+                  const brandColors: Record<string, string> = {
+                    instagram: "#E1306C",
+                    linkedin: "#0A66C2",
+                    github: "#24292F",
+                    phone: "#007AFF",
+                    mail: "#D14836",
+                    whatsapp: "#25D366",
+                  };
+                  const brandColor = brandColors[link.icon] ?? "#000000";
 
                   return (
                     <a
@@ -182,7 +192,10 @@ export function HeroSection() {
                       {...external}
                       className="pill group min-w-0"
                     >
-                      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-card text-ink transition-colors duration-200 group-hover:bg-yellow">
+                      <span
+                        className="grid h-9 w-9 shrink-0 place-items-center rounded-full text-white transition-colors duration-200"
+                        style={{ backgroundColor: brandColor }}
+                      >
                         <Icon className="h-4 w-4" aria-hidden="true" />
                       </span>
                       <span className="min-w-0">
