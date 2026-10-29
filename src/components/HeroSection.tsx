@@ -190,7 +190,7 @@ export function HeroSection() {
                       key={link.label}
                       href={link.href}
                       {...external}
-                      className="pill group min-w-0"
+                      className="pill group w-full min-w-0"
                     >
                       <span
                         className="grid h-9 w-9 shrink-0 place-items-center rounded-full text-white transition-colors duration-200"
