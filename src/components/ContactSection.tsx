@@ -1,341 +1,291 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 import {
-  Mail,
-  MapPin,
-  Linkedin,
+  AlertCircle,
+  ArrowUpRight,
   Github,
   Instagram,
+  Linkedin,
+  Mail,
+  MapPin,
+  Phone,
   Send,
-  ArrowUpRight,
-  CheckCircle2,
-  AlertCircle,
 } from "lucide-react";
 import { profile } from "@/lib/data";
 import { WhatsAppIcon } from "@/components/brand-icons";
+import { Reveal } from "@/components/Reveal";
+
+type Status = "idle" | "error" | "ready";
 
 const socials = [
-  { icon: Linkedin, href: profile.socials.linkedin, label: "LinkedIn" },
-  { icon: Github, href: profile.socials.github, label: "GitHub" },
-  { icon: Instagram, href: profile.socials.instagram, label: "Instagram" },
-  { icon: Mail, href: `mailto:${profile.email}`, label: "Email" },
+  { icon: Linkedin, label: "LinkedIn", href: profile.socials.linkedin },
+  { icon: Instagram, label: "Instagram", href: profile.socials.instagram },
+  { icon: Github, label: "GitHub", href: profile.socials.github },
+  { icon: WhatsAppIcon, label: "WhatsApp", href: profile.socials.whatsapp },
 ];
 
 export function ContactSection() {
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    projectType: "",
-    budget: "",
-    message: "",
-  });
+  const [status, setStatus] = useState<Status>("idle");
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!form.name || !form.email || !form.message) {
+  const updateField =
+    (key: keyof typeof form) =>
+    (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      setForm((current) => ({ ...current, [key]: event.target.value }));
+    };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const name = form.name.trim();
+    const email = form.email.trim();
+    const message = form.message.trim();
+    const emailIsValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+    if (!name || !emailIsValid || !message) {
       setStatus("error");
-      setTimeout(() => setStatus("idle"), 3000);
       return;
     }
-    setStatus("loading");
-    setTimeout(() => {
-      setStatus("success");
-      setForm({ name: "", email: "", projectType: "", budget: "", message: "" });
-    }, 1500);
+
+    const subject = encodeURIComponent(`Project enquiry from ${name}`);
+    const body = encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\n\nProject details:\n${message}`,
+    );
+    window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
+    setStatus("ready");
   };
 
-  const setField = (key: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
-    setForm((prev) => ({ ...prev, [key]: e.target.value }));
-
-  const projectTypes = [
-    "Website Development",
-    "Video Editing",
-    "Graphic Design",
-    "AI Automation",
-    "Digital Products",
-    "Creative Strategy",
-  ];
-
-  const budgetRanges = ["Under $500", "$500 - $1,500", "$1,500 - $5,000", "$5,000+"];
-
   return (
-    <section id="contact" className="relative section-py overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 z-decorative grid-bg" />
-      <div className="section-container relative z-content">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }}
-          className="mx-auto max-w-4xl text-center mb-16 overflow-guard"
-        >
-          <div className="flex items-center justify-center gap-2 mb-6">
-            <span className="sticky-note tilt-n3">
-              <span className="font-heading text-xs font-bold text-foreground uppercase tracking-tighter">
-                LET&apos;S TALK
-              </span>
-            </span>
+    <section id="contact" className="relative section-pad">
+      <div className="section-container">
+        <Reveal>
+          <div className="flex flex-col gap-6 border-t border-line pt-12 md:flex-row md:items-end md:justify-between md:pt-16">
+            <div>
+              <p className="eyebrow">Contact</p>
+              <h2 className="mt-4 max-w-2xl text-section-title text-ink">
+                Let&apos;s build something
+              </h2>
+            </div>
+            <p className="max-w-md text-[13px] leading-relaxed text-body md:text-right">
+              Have a project in mind? Send a note with the idea, the goal, and the
+              timeline. I&apos;ll reply from Madurai.
+            </p>
           </div>
-          <h2 className="font-heading font-bold leading-[1.05] text-display-sm heading-gradient mb-6 text-balance">
-            Let&apos;s Make Something Good.
-          </h2>
-          <p className="text-muted-foreground text-sm md:text-base max-w-2xl mx-auto font-body leading-relaxed text-balance">
-            Have a website idea, a brand that needs better content, or a digital
-            problem worth solving? Let&apos;s talk about it.
-          </p>
-        </motion.div>
+        </Reveal>
 
-        <div className="grid gap-10 lg:gap-12 lg:grid-cols-2 max-w-5xl mx-auto overflow-guard">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] as const }}
-            className="space-y-8 overflow-guard"
-          >
-            <div className="paper-card p-6 sm:p-8 overflow-guard">
-              <div className="space-y-6 overflow-guard">
+        <div className="mt-9 grid gap-5 lg:grid-cols-[0.88fr_1.12fr] lg:gap-6">
+          <Reveal delay={0.05}>
+            <div className="card flex h-full flex-col p-5 sm:p-7">
+              <div className="flex items-center gap-3">
+                <span className="grid h-10 w-10 place-items-center rounded-full bg-yellow text-ink">
+                  <Mail className="h-4 w-4" aria-hidden="true" />
+                </span>
                 <div>
-                  <h3 className="font-heading text-lg font-bold text-foreground mb-2">
-                    Get in Touch
-                  </h3>
-                  <p className="text-sm text-muted-foreground/90 leading-relaxed">
-                    I usually reply within 24 hours. Tell me about your project
-                    and I&apos;ll get back to you.
+                  <p className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-ink">
+                    Say hello directly
                   </p>
-                </div>
-
-                <div className="space-y-5 overflow-guard">
-                  <a
-                    href={`mailto:${profile.email}`}
-                    className="flex items-center gap-3 p-3 rounded-lg border border-border/60 bg-card hover:bg-secondary/50 transition-colors"
-                  >
-                    <div className="grid h-10 w-10 place-items-center rounded-xl bg-primary/10 text-primary shrink-0">
-                      <Mail className="h-4 w-4" />
-                    </div>
-                    <div className="min-w-0">
-                      <span className="block text-xs font-space font-bold uppercase tracking-widest text-muted-foreground">
-                        Email
-                      </span>
-                      <span className="block text-sm font-space text-foreground truncate">
-                        {profile.email}
-                      </span>
-                    </div>
-                  </a>
-                  <a
-                    href={profile.socials.whatsapp}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-3 rounded-lg border border-border/60 bg-card hover:bg-secondary/50 transition-colors"
-                  >
-                    <div className="grid h-10 w-10 place-items-center rounded-xl bg-[rgba(37,211,102,0.16)] text-[#25D366] shrink-0">
-                      <WhatsAppIcon className="h-4 w-4" />
-                    </div>
-                    <div className="min-w-0">
-                      <span className="block text-xs font-space font-bold uppercase tracking-widest text-muted-foreground">
-                        WhatsApp
-                      </span>
-                      <span className="block text-sm font-space text-foreground truncate">
-                        {profile.phone}
-                      </span>
-                    </div>
-                  </a>
-                  <div className="flex items-center gap-3 p-3 rounded-lg border border-border/60 bg-card">
-                    <div className="grid h-10 w-10 place-items-center rounded-xl bg-secondary text-foreground shrink-0">
-                      <MapPin className="h-4 w-4" />
-                    </div>
-                    <div className="min-w-0">
-                      <span className="block text-xs font-space font-bold uppercase tracking-widest text-muted-foreground">
-                        Location
-                      </span>
-                      <span className="block text-sm font-space text-foreground truncate">
-                        {profile.location}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="pt-4 border-t border-border/60 overflow-guard">
-                  <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                    Find me online
+                  <p className="mt-0.5 text-[11px] text-subtle">
+                    Usually replies within 24 hours
                   </p>
-                  <div className="flex flex-wrap gap-3 overflow-guard">
-                    {socials.map(({ icon: Icon, href, label }) => (
-                      <a
-                        key={label}
-                        href={href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={label}
-                        className="grid h-10 w-10 place-items-center rounded-full border border-border/60 bg-card text-muted-foreground transition-all hover:-translate-y-1 hover:border-primary/50 hover:text-primary"
-                      >
-                        <Icon className="h-4 w-4" />
-                      </a>
-                    ))}
-                  </div>
                 </div>
               </div>
-            </div>
 
-            <div className="paper-card overflow-guard border-[#ff6b00]/45 bg-[#3b3027] p-6 shadow-[0_16px_40px_rgba(255,107,0,0.10)] hover:border-[#ff6b00]/70 hover:shadow-[0_18px_44px_rgba(255,107,0,0.16)] sm:p-8">
-              <div className="flex items-center gap-2 mb-1 overflow-guard">
-                <div className="grid h-9 w-9 place-items-center rounded-xl bg-[#ff6b00] text-white shrink-0">
-                  <Mail className="h-4 w-4" />
+              <div className="mt-6 space-y-2.5">
+                <a href={`mailto:${profile.email}`} className="pill group w-full">
+                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-card text-ink transition-colors group-hover:bg-yellow">
+                    <Mail className="h-4 w-4" aria-hidden="true" />
+                  </span>
+                  <span className="min-w-0">
+                    <span className="block text-[9px] font-bold uppercase tracking-[0.12em] text-subtle">
+                      Email
+                    </span>
+                    <span className="block break-all text-xs font-semibold text-ink">
+                      {profile.email}
+                    </span>
+                  </span>
+                </a>
+
+                <a
+                  href={`tel:${profile.phone.replace(/\s/g, "")}`}
+                  className="pill group w-full"
+                >
+                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-card text-ink transition-colors group-hover:bg-yellow">
+                    <Phone className="h-4 w-4" aria-hidden="true" />
+                  </span>
+                  <span className="min-w-0">
+                    <span className="block text-[9px] font-bold uppercase tracking-[0.12em] text-subtle">
+                      Phone
+                    </span>
+                    <span className="block text-xs font-semibold text-ink">
+                      {profile.phone}
+                    </span>
+                  </span>
+                </a>
+
+                <div className="flex w-full items-center gap-3 rounded-full border border-line bg-white px-3.5 py-2.5">
+                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-card text-ink">
+                    <MapPin className="h-4 w-4" aria-hidden="true" />
+                  </span>
+                  <span className="min-w-0">
+                    <span className="block text-[9px] font-bold uppercase tracking-[0.12em] text-subtle">
+                      Location
+                    </span>
+                    <span className="block text-xs font-semibold text-ink">
+                      {profile.location}
+                    </span>
+                  </span>
                 </div>
-                <span className="font-heading text-lg font-bold text-[#fff2e5]">
-                  Arrise Digital
+              </div>
+
+              <div className="mt-6 border-t border-line pt-5">
+                <p className="mb-3 text-[9px] font-extrabold uppercase tracking-[0.16em] text-subtle">
+                  Find me online
+                </p>
+                <div className="grid grid-cols-2 gap-2">
+                  {socials.map(({ icon: Icon, label, href }) => (
+                    <a
+                      key={label}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-between gap-2 rounded-xl border border-line bg-white px-3 py-2.5 text-[10px] font-extrabold uppercase tracking-[0.08em] text-ink transition-colors hover:border-yellow hover:bg-yellow/20"
+                    >
+                      <span className="flex items-center gap-2">
+                        <Icon className="h-3.5 w-3.5" aria-hidden="true" />
+                        {label}
+                      </span>
+                      <ArrowUpRight className="h-3 w-3 text-subtle" aria-hidden="true" />
+                    </a>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mt-6 rounded-xl border border-line bg-surface p-4">
+                <p className="text-[10px] font-extrabold uppercase tracking-[0.14em] text-ink">
+                  Through {profile.agency}
+                </p>
+                <a
+                  href={profile.agencyWebsite}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-arrow mt-2"
+                >
+                  Visit the agency
+                  <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                </a>
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <form
+              onSubmit={handleSubmit}
+              noValidate
+              className="card h-full p-5 sm:p-7"
+            >
+              <div className="flex items-center justify-between gap-3">
+                <div>
+                  <h3 className="text-xl font-extrabold tracking-[-0.035em] text-ink">
+                    Send a message
+                  </h3>
+                  <p className="mt-1 text-[11px] text-subtle">
+                    This opens your email app with everything filled in.
+                  </p>
+                </div>
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-card text-ink">
+                  <Send className="h-4 w-4" aria-hidden="true" />
                 </span>
               </div>
-              <p className="text-xs font-semibold text-[#ff8a3d] uppercase tracking-widest mb-6">
-                Partners in Progress
-              </p>
-              <p className="text-sm text-[#d5c7ba] leading-relaxed mb-6">
-                A creative technology agency working across web development,
-                content production, and automation. Based in Madurai, India.
-              </p>
-              <div className="space-y-4 overflow-guard">
-                <div className="flex items-center gap-3 text-sm font-body overflow-guard">
-                  <span className="text-[#d5c7ba]">Website:</span>
-                  <a
-                    href={profile.agencyWebsite}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[#ff6b00] underline-offset-2 hover:underline truncate"
+
+              <div className="mt-5 grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label
+                    htmlFor="contact-name"
+                    className="mb-1.5 block text-[9px] font-extrabold uppercase tracking-[0.12em] text-subtle"
                   >
-                    {profile.agencyWebsite.replace(/\/$/, "")}
-                  </a>
+                    Your name
+                  </label>
+                  <input
+                    id="contact-name"
+                    name="name"
+                    type="text"
+                    autoComplete="name"
+                    value={form.name}
+                    onChange={updateField("name")}
+                    placeholder="Your name"
+                    required
+                    className="input-field"
+                  />
+                </div>
+                <div>
+                  <label
+                    htmlFor="contact-email"
+                    className="mb-1.5 block text-[9px] font-extrabold uppercase tracking-[0.12em] text-subtle"
+                  >
+                    Your email
+                  </label>
+                  <input
+                    id="contact-email"
+                    name="email"
+                    type="email"
+                    autoComplete="email"
+                    value={form.email}
+                    onChange={updateField("email")}
+                    placeholder="you@email.com"
+                    required
+                    className="input-field"
+                  />
                 </div>
               </div>
-            </div>
-          </motion.div>
 
-          <motion.form
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] as const }}
-            onSubmit={handleSubmit}
-            className="space-y-4 overflow-guard"
-          >
-            <div className="grid gap-4 sm:grid-cols-2 overflow-guard">
-              <div>
-                <label className="mb-2 block text-[10px] font-semibold text-muted-foreground uppercase tracking-widest">
-                  Your Name
+              <div className="mt-4">
+                <label
+                  htmlFor="contact-message"
+                  className="mb-1.5 block text-[9px] font-extrabold uppercase tracking-[0.12em] text-subtle"
+                >
+                  Project details
                 </label>
-                <input
-                  type="text"
-                  value={form.name}
-                  onChange={setField("name")}
-                  placeholder="Jane Doe"
+                <textarea
+                  id="contact-message"
+                  name="message"
+                  value={form.message}
+                  onChange={updateField("message")}
+                  rows={6}
+                  placeholder="Tell me about the idea, the goal, and the timeline..."
                   required
-                  className="w-full rounded-xl border border-border/60 bg-card px-4 py-3 text-sm outline-none transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20 placeholder:text-muted-foreground/50"
+                  className="input-field resize-y"
                 />
               </div>
-              <div>
-                <label className="mb-2 block text-[10px] font-semibold text-muted-foreground uppercase tracking-widest">
-                  Your Email
-                </label>
-                <input
-                  type="email"
-                  value={form.email}
-                  onChange={setField("email")}
-                  placeholder="jane@email.com"
-                  required
-                  className="w-full rounded-xl border border-border/60 bg-card px-4 py-3 text-sm outline-none transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20 placeholder:text-muted-foreground/50"
-                />
+
+              <button type="submit" className="btn-dark mt-4 w-full">
+                <Send className="h-4 w-4" aria-hidden="true" />
+                Send message
+              </button>
+
+              <div aria-live="polite" className="mt-3">
+                {status === "error" ? (
+                  <p className="flex items-start gap-2 rounded-xl border border-red-200 bg-red-50 p-3 text-[11px] font-semibold text-red-900">
+                    <AlertCircle className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+                    Add your name, a valid email address, and a short message before sending.
+                  </p>
+                ) : null}
+                {status === "ready" ? (
+                  <p className="rounded-xl border border-yellow/60 bg-yellow/15 p-3 text-[11px] font-semibold text-ink">
+                    Your email app should open with the message ready — nothing is
+                    sent until you press send there. If it does not open, email{" "}
+                    <a href={`mailto:${profile.email}`} className="underline">
+                      {profile.email}
+                    </a>
+                    .
+                  </p>
+                ) : null}
               </div>
-            </div>
-            <div className="overflow-guard">
-              <label className="mb-2 block text-[10px] font-semibold text-muted-foreground uppercase tracking-widest">
-                Project Type
-              </label>
-              <select
-                value={form.projectType}
-                onChange={setField("projectType")}
-                className="w-full rounded-xl border border-border/60 bg-card px-4 py-3 text-sm outline-none transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20"
-              >
-                <option value="">Select a project type</option>
-                {projectTypes.map((t) => (
-                  <option key={t} value={t}>
-                    {t}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className="overflow-guard">
-              <label className="mb-2 block text-[10px] font-semibold text-muted-foreground uppercase tracking-widest">
-                Budget Range
-              </label>
-              <select
-                value={form.budget}
-                onChange={setField("budget")}
-                className="w-full rounded-xl border border-border/60 bg-card px-4 py-3 text-sm outline-none transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20"
-              >
-                <option value="">Select budget range</option>
-                {budgetRanges.map((b) => (
-                  <option key={b} value={b}>
-                    {b}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className="overflow-guard">
-              <label className="mb-2 block text-[10px] font-semibold text-muted-foreground uppercase tracking-widest">
-                Project Description
-              </label>
-              <textarea
-                value={form.message}
-                onChange={setField("message")}
-                required
-                rows={5}
-                placeholder="Tell me about your project..."
-                className="w-full resize-none rounded-xl border border-border/60 bg-card px-4 py-3 text-sm outline-none transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20 placeholder:text-muted-foreground/50"
-              />
-            </div>
-            <button
-              type="submit"
-              disabled={status === "loading"}
-              className={`w-full rounded-xl px-6 py-3 text-xs font-heading font-bold text-[#323232] uppercase tracking-widest transition-all disabled:opacity-50 ${
-                status === "loading"
-                  ? "bg-secondary text-secondary-foreground cursor-not-allowed"
-                  : "bg-primary hover:bg-yellow-400 shadow-sm hover:shadow-md hover:-translate-y-0.5"
-              }`}
-            >
-              {status === "loading" ? (
-                <>
-                  <span className="animate-spin h-4 w-4" />
-                  SENDING...
-                </>
-              ) : (
-                <>
-                  <Send className="h-4 w-4" /> SEND PROJECT ENQUIRY
-                </>
-              )}
-            </button>
-            {status === "success" && (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="mt-2 p-3 rounded-lg bg-green-100 border border-green-200 text-green-900 text-[11px] font-semibold flex items-center gap-2"
-              >
-                <CheckCircle2 className="h-4 w-4" />
-                Enquiry sent successfully.
-              </motion.div>
-            )}
-            {status === "error" && (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="mt-2 p-3 rounded-lg bg-red-100 border border-red-200 text-red-900 text-[11px] font-semibold flex items-center gap-2"
-              >
-                <AlertCircle className="h-4 w-4" />
-                Please fill in all required fields.
-              </motion.div>
-            )}
-          </motion.form>
+
+              <p className="mt-3 text-center text-[9px] font-semibold uppercase tracking-[0.08em] text-subtle">
+                No spam. No fake confirmation screens.
+              </p>
+            </form>
+          </Reveal>
         </div>
       </div>
     </section>

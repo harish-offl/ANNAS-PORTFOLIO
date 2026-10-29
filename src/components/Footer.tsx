@@ -1,71 +1,90 @@
-"use client";
+import {
+  ArrowUp,
+  Github,
+  Instagram,
+  Linkedin,
+  Mail,
+} from "lucide-react";
+import { navLinks, profile } from "@/lib/data";
+import { WhatsAppIcon } from "@/components/brand-icons";
 
-import { ArrowUp } from "lucide-react";
-import { profile } from "@/lib/data";
+const socials = [
+  { icon: Linkedin, label: "LinkedIn", href: profile.socials.linkedin },
+  { icon: Instagram, label: "Instagram", href: profile.socials.instagram },
+  { icon: Github, label: "GitHub", href: profile.socials.github },
+  { icon: WhatsAppIcon, label: "WhatsApp", href: profile.socials.whatsapp },
+];
 
 export function Footer() {
   return (
-    <footer className="relative border-t border-border/60 overflow-hidden">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
-      <div className="section-container">
-        <div className="grid grid-cols-2 items-center gap-x-4 gap-y-5 pb-10 sm:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] sm:gap-8 overflow-guard">
-          <div className="flex items-center gap-2.5 min-w-0">
-            <span
-              className="grid h-9 w-9 place-items-center rounded-xl border border-border/60 bg-card font-heading text-xs font-bold text-foreground tracking-tighter shrink-0"
-            >
-              {profile.monogram}
-            </span>
-            <span className="font-heading text-xs font-bold tracking-widest uppercase text-foreground truncate">
-              {profile.name}
-            </span>
+    <footer className="border-t border-line bg-yellow/15 py-10 sm:py-12 text-ink">
+      <div className="section-container py-10 sm:py-12">
+        <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
+          <div className="max-w-sm">
+            <a href="#home" className="group inline-flex items-center gap-3">
+              <span className="grid h-11 w-11 place-items-center rounded-full border border-line bg-white text-[11px] font-extrabold text-ink transition-colors group-hover:border-yellow group-hover:bg-yellow">
+                {profile.monogram}
+              </span>
+              <span>
+                <span className="block text-sm font-bold tracking-[-0.02em] text-ink">
+                  {profile.name}
+                </span>
+                <span className="mt-0.5 block text-[9px] font-semibold uppercase tracking-[0.14em] text-subtle">
+                  {profile.shortRole}
+                </span>
+              </span>
+            </a>
+            <p className="mt-4 text-[12px] leading-relaxed text-body">
+              Building modern digital experiences through {profile.agency}. Based
+              in Madurai, working with clients everywhere.
+            </p>
           </div>
-          <p className="col-span-2 text-center text-[11px] font-body text-muted-foreground/80 leading-relaxed text-balance sm:col-span-1 sm:justify-self-center">
-            Designed with curiosity. Built with purpose.
-          </p>
-          <a
-            href="#home"
-            className="inline-flex shrink-0 items-center gap-1.5 justify-self-end rounded-lg border border-border/60 bg-card px-3 py-1.5 text-[10px] font-semibold text-muted-foreground uppercase transition-colors hover:bg-secondary hover:text-foreground sm:col-start-3"
-          >
-            Back to top
-            <ArrowUp className="h-3 w-3" />
-          </a>
-        </div>
 
-        <div className="relative flex overflow-hidden border-y border-border/60 py-6">
-          <div className="flex w-max animate-[marquee_28s_linear_infinite] will-change-transform">
-            {[0, 1].map((copy) => (
-              <div
-                key={copy}
-                aria-hidden={copy === 1}
-                className="flex shrink-0 items-center gap-12 pr-12"
+          <nav aria-label="Footer navigation" className="flex flex-col gap-2">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-[11px] font-semibold text-body transition-colors hover:text-ink"
               >
-                {[
-                  "Web Development",
-                  "Video Editing",
-                  "Graphic Design",
-                  "AI Automation",
-                  "Branding",
-                  "Content Creation",
-                ].map((word, i) => (
-                  <span
-                    key={`${word}-${i}`}
-                    className="flex items-center gap-3 text-[10px] font-semibold text-muted-foreground/60 uppercase tracking-widest shrink-0 whitespace-nowrap"
-                  >
-                    {word}
-                    <span className="h-1 w-1 rounded-full bg-primary/60" />
-                  </span>
-                ))}
-              </div>
+                {link.label}
+              </a>
             ))}
+          </nav>
+
+          <div className="flex flex-col items-start gap-4 lg:items-end">
+            <div className="flex items-center gap-2">
+              {socials.map(({ icon: Icon, label, href }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="grid h-9 w-9 place-items-center rounded-full border border-line bg-white text-ink transition-all duration-200 hover:-translate-y-0.5 hover:border-yellow hover:bg-yellow"
+                >
+                  <Icon className="h-4 w-4" aria-hidden="true" />
+                </a>
+              ))}
+              <a
+                href={`mailto:${profile.email}`}
+                aria-label="Email Annamalai"
+                className="grid h-9 w-9 place-items-center rounded-full border border-line bg-white text-ink transition-all duration-200 hover:-translate-y-0.5 hover:border-yellow hover:bg-yellow"
+              >
+                <Mail className="h-4 w-4" aria-hidden="true" />
+              </a>
+            </div>
+
+            <a href="#home" className="btn-light !min-h-[36px] !px-3 !py-1.5 !text-[9px]">
+              Back to top
+              <ArrowUp className="h-3 w-3" aria-hidden="true" />
+            </a>
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-between gap-4 py-8 text-[10px] font-body text-muted-foreground/60 sm:flex-row overflow-guard">
-          <p className="text-center sm:text-left">
+        <div className="mt-9 flex flex-col items-start justify-between gap-2 border-t border-line pt-5 text-[9px] font-semibold uppercase tracking-[0.1em] text-subtle sm:flex-row sm:items-center">
+          <p>
             © {new Date().getFullYear()} {profile.name}. All rights reserved.
-          </p>
-          <p className="flex items-center gap-1 text-center">
-            Built with Next.js · Tailwind · Framer Motion
           </p>
         </div>
       </div>

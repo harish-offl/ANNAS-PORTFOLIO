@@ -1,158 +1,95 @@
-"use client";
+import {
+  ArrowUpRight,
+  Camera,
+  Clapperboard,
+  Code2,
+  LayoutDashboard,
+  Palette,
+  Sparkles,
+  type LucideIcon,
+} from "lucide-react";
+import { serviceCards } from "@/lib/data";
+import { Reveal } from "@/components/Reveal";
 
-import { motion } from "framer-motion";
-import { Code2, Video, Palette, Bot, ShoppingCart, Brain } from "lucide-react";
-import { profile } from "@/lib/data";
-
-const services = [
-  {
-    id: "web",
-    number: "01",
-    title: "Web Development",
-    icon: Code2,
-    description:
-      "I design and develop responsive websites, landing pages, portfolios, and e-commerce experiences that combine usability with strong visual identity.",
-    tags: ["Next.js", "React", "Tailwind", "E-commerce"],
-    color: "bg-card border-border/70 text-foreground",
-    iconBg: "bg-primary/10 text-primary border-primary/20",
-  },
-  {
-    id: "video",
-    number: "02",
-    title: "Video Editing",
-    icon: Video,
-    description:
-      "I create engaging short-form and long-form content for brands, creators, and businesses, with a focus on pacing, storytelling, and audience retention.",
-    tags: ["Reels", "Shorts", "CapCut", "Premiere Pro"],
-    color: "bg-card border-border/70 text-foreground",
-    iconBg: "bg-primary/10 text-primary border-primary/20",
-  },
-  {
-    id: "design",
-    number: "03",
-    title: "Graphic Design",
-    icon: Palette,
-    description:
-      "I design social media creatives, promotional graphics, visual assets, and branded content that communicate clearly and consistently.",
-    tags: ["Branding", "Canva", "Social Media", "Visual Identity"],
-    color: "bg-card border-border/70 text-foreground",
-    iconBg: "bg-primary/10 text-primary border-primary/20",
-  },
-  {
-    id: "ai",
-    number: "04",
-    title: "AI Automation",
-    icon: Bot,
-    description:
-      "I explore practical AI-powered workflows that reduce repetitive tasks and help businesses operate more efficiently.",
-    tags: ["AI", "Automation", "Workflows", "Prompt Engineering"],
-    color: "bg-card border-border/70 text-foreground",
-    iconBg: "bg-primary/10 text-primary border-primary/20",
-  },
-  {
-    id: "products",
-    number: "05",
-    title: "Digital Products",
-    icon: ShoppingCart,
-    description:
-      "I develop practical web applications, dashboards, and business tools that solve real workflow problems.",
-    tags: ["Web Apps", "Dashboards", "Tools", "Product Design"],
-    color: "bg-card border-border/70 text-foreground",
-    iconBg: "bg-primary/10 text-primary border-primary/20",
-  },
-  {
-    id: "strategy",
-    number: "06",
-    title: "Creative Strategy",
-    icon: Brain,
-    description:
-      "I combine content, design, technology, and branding to help businesses present their ideas effectively online.",
-    tags: ["Strategy", "Branding", "Content", "Consulting"],
-    color: "bg-card border-border/70 text-foreground",
-    iconBg: "bg-primary/10 text-primary border-primary/20",
-  },
-];
+const iconMap: Record<string, LucideIcon> = {
+  code: Code2,
+  layout: LayoutDashboard,
+  clapperboard: Clapperboard,
+  palette: Palette,
+  camera: Camera,
+  sparkles: Sparkles,
+};
 
 export function ServicesSection() {
   return (
-    <section
-      id="services"
-      className="relative section-py overflow-hidden"
-    >
-      <div className="pointer-events-none absolute inset-0 z-decorative grid-bg" />
-      <div className="section-container relative z-content">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }}
-          className="mx-auto max-w-4xl text-center mb-16 overflow-guard"
-        >
-          <div className="flex items-center justify-center gap-2 mb-6">
-            <span className="sticky-note tilt-n3">
-              <span className="font-heading text-xs font-bold text-foreground uppercase tracking-tighter">
-                WHAT I DO
-              </span>
-            </span>
+    <section id="services" className="relative section-pad">
+      <div className="section-container">
+        <Reveal>
+          <div className="flex flex-col gap-6 border-t border-line pt-12 md:flex-row md:items-end md:justify-between md:pt-16">
+            <div>
+              <p className="eyebrow">Services</p>
+              <h2 className="mt-4 max-w-2xl text-section-title text-ink">
+                What I can build with you
+              </h2>
+            </div>
+            <p className="max-w-md text-[13px] leading-relaxed text-body md:text-right">
+              One creative partner across development, design, video, and content
+              — from the first idea to the final delivery.
+            </p>
           </div>
-          <h2 className="font-heading font-bold leading-[1.05] text-display-sm heading-gradient mb-6 text-balance">
-            What I Bring to the Table.
-          </h2>
-          <p className="text-muted-foreground text-sm md:text-base max-w-2xl mx-auto font-body leading-relaxed text-balance">
-            From code to camera, I work across disciplines to help ideas become
-            reality.
-          </p>
-        </motion.div>
+        </Reveal>
 
-        <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto overflow-guard">
-          {services.map((service, i) => (
-            <motion.div
-              key={service.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] as const }}
-              whileHover={{ y: -4 }}
-              className={`relative group paper-card p-6 ${service.color} overflow-guard min-w-0`}
-            >
-              <div className="absolute -top-2 -right-2 h-7 w-7 rounded-full bg-card border border-border/60 shadow-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                <span className="text-[9px] font-bold text-primary">✓</span>
-              </div>
-              <div className="flex items-center gap-3 mb-4">
-                <span className={`grid h-10 w-10 place-items-center rounded-xl ${service.iconBg} shadow-sm shrink-0`}>
-                  <service.icon className="h-5 w-5" />
-                </span>
-                <span className="font-heading text-xs font-bold text-foreground uppercase tracking-widest">
-                  #{service.number}
-                </span>
-              </div>
-              <h3 className="font-heading text-lg font-bold text-foreground mb-2">
-                {service.title}
-              </h3>
-              <p className="text-sm font-body text-muted-foreground/90 leading-relaxed mb-6">
-                {service.description}
-              </p>
-              <div className="flex flex-wrap gap-2 overflow-guard">
-                {service.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="inline-block px-2.5 py-0.5 rounded border border-border/60 bg-card/50 text-[10px] font-semibold text-muted-foreground/80 uppercase"
+        <div className="mt-9 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {serviceCards.map((service, index) => {
+            const Icon = iconMap[service.icon] ?? Sparkles;
+            return (
+              <Reveal key={service.id} delay={0.03 + index * 0.04}>
+                <article className="group card flex h-full flex-col p-5 transition-all duration-300 hover:-translate-y-1 hover:border-yellow hover:shadow-soft sm:p-6">
+                  <div className="flex items-start justify-between gap-3">
+                    <span className="grid h-11 w-11 place-items-center rounded-full border border-line bg-white text-ink transition-colors duration-300 group-hover:border-yellow group-hover:bg-yellow">
+                      <Icon className="h-5 w-5" aria-hidden="true" />
+                    </span>
+                    <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-subtle">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+
+                  <h3 className="mt-5 text-lg font-extrabold tracking-[-0.035em] text-ink">
+                    {service.title}
+                  </h3>
+                  <p className="mt-2 flex-1 text-[13px] leading-relaxed text-body">
+                    {service.description}
+                  </p>
+
+                  <a
+                    href="#contact"
+                    className="mt-5 inline-flex items-center gap-2 border-t border-line pt-4 text-[10px] font-extrabold uppercase tracking-[0.12em] text-ink transition-colors hover:text-body"
                   >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
+                    Discuss this
+                    <ArrowUpRight
+                      className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                      aria-hidden="true"
+                    />
+                  </a>
+                </article>
+              </Reveal>
+            );
+          })}
         </div>
 
-        <div className="mt-16 flex justify-center overflow-guard">
-          <span className="sticky-note tilt-2">
-            <span className="font-heading text-xs font-bold text-foreground uppercase tracking-tighter">
-              Available for freelance & remote work
-            </span>
-          </span>
-        </div>
+        <Reveal delay={0.1}>
+          <div className="mt-9 flex flex-col items-start justify-between gap-4 rounded-2xl border border-line bg-card p-5 sm:flex-row sm:items-center sm:p-6">
+            <p className="max-w-xl text-[13px] leading-relaxed text-body">
+              Need something that does not fit neatly into one category? I also
+              work on AI automation, digital products, and custom creative
+              solutions.
+            </p>
+            <a href="#contact" className="btn-dark shrink-0">
+              Tell me about it
+              <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+            </a>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

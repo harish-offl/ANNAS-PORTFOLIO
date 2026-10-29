@@ -1,7 +1,6 @@
-import type { Metadata } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -9,43 +8,51 @@ const inter = Inter({
   display: "swap",
 });
 
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-space-grotesk",
-  display: "swap",
-  weight: ["400", "500", "600", "700"],
-});
+const siteUrl = "https://annamalaiportfolio.vercel.app";
 
 export const metadata: Metadata = {
-  title: "M. RM. Annamalai | Creative Developer & Digital Creator",
+  metadataBase: new URL(siteUrl),
+  title: "M.RM. Annamalai | Developer, Designer & Digital Creator",
   description:
-    "Portfolio of M. RM. Annamalai — Creative Developer, Video Editor, Content Creator, and AI Automation Enthusiast from Madurai, India. Building digital experiences through Arrise Digital.",
+    "Portfolio of M.RM. Annamalai — developer, video editor, graphic designer, and digital creator. Building modern websites, thoughtful interfaces, and visual stories through Arrise Digital.",
   keywords: [
-    "creative developer",
-    "video editing",
-    "content creator",
-    "AI automation",
-    "web development",
-    "graphic design",
-    "portfolio",
     "Annamalai",
+    "portfolio",
+    "creative developer",
+    "web developer",
+    "video editor",
+    "graphic designer",
+    "UI UX designer",
+    "Madurai",
+    "Tamil Nadu",
     "Arrise Digital",
   ],
-  authors: [{ name: "M. RM. Annamalai" }],
+  authors: [{ name: "M.RM. Annamalai", url: siteUrl }],
+  creator: "M.RM. Annamalai",
+  alternates: { canonical: siteUrl },
   openGraph: {
-    title: "M. RM. Annamalai | Creative Developer & Digital Creator",
+    title: "M.RM. Annamalai | Developer, Designer & Digital Creator",
     description:
-      "Building digital experiences and creating content that moves brands forward.",
+      "Modern websites, thoughtful interfaces, and visual stories. Explore selected work by M.RM. Annamalai.",
     type: "website",
-    locale: "en_US",
-    siteName: "M. RM. Annamalai Portfolio",
+    locale: "en_IN",
+    url: siteUrl,
+    siteName: "M.RM. Annamalai Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "M. RM. Annamalai | Creative Developer & Digital Creator",
+    title: "M.RM. Annamalai | Developer, Designer & Digital Creator",
     description:
-      "Building digital experiences and creating content that moves brands forward.",
+      "Modern websites, thoughtful interfaces, and visual stories. Explore selected work by M.RM. Annamalai.",
   },
+  robots: { index: true, follow: true },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#FFFFFF",
+  colorScheme: "light",
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
@@ -54,11 +61,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
-      <body
-        className={`${inter.variable} ${spaceGrotesk.variable} font-sans bg-background text-foreground antialiased`}
-      >
-        <ThemeProvider>{children}</ThemeProvider>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.variable} font-body antialiased`}>
+        {children}
       </body>
     </html>
   );

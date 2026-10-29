@@ -1,125 +1,287 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Play } from "lucide-react";
+import Image from "next/image";
+import { motion, useReducedMotion } from "framer-motion";
+import {
+  ArrowUpRight,
+  BadgeCheck,
+  Clock3,
+  Github,
+  Instagram,
+  Linkedin,
+  Mail,
+  MapPin,
+  Phone,
+  Sparkles,
+} from "lucide-react";
+import {
+  connectLinks,
+  experienceCard,
+  profile,
+  projects,
+  specializations,
+} from "@/lib/data";
+import { WhatsAppIcon } from "@/components/brand-icons";
+import { Reveal } from "@/components/Reveal";
+
+const ease = [0.22, 1, 0.36, 1] as const;
 
 const container = {
   hidden: {},
-  show: {
-    transition: { staggerChildren: 0.1, delayChildren: 0.15 },
-  },
+  show: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
 };
 
 const item = {
-  hidden: { opacity: 0, y: 30 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const },
-  },
+  hidden: { opacity: 0, y: 22 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.62, ease } },
+};
+
+const connectIconMap = {
+  instagram: Instagram,
+  linkedin: Linkedin,
+  github: Github,
+  phone: Phone,
+  mail: Mail,
+  whatsapp: WhatsAppIcon,
 };
 
 export function HeroSection() {
+  const reduce = useReducedMotion();
+  const featured = projects.find((project) => project.id === "bangles-by-beauty") ?? projects[0];
+
   return (
     <section
-      id="home"
-      className="relative min-h-[100svh] md:min-h-[85vh] flex flex-col items-center justify-center pt-20 sm:pt-24 section-py-lg"
+      id="about"
+      className="relative overflow-hidden pb-16 pt-28 sm:pb-20 sm:pt-32 lg:pb-28 lg:pt-36"
     >
-      <div className="pointer-events-none absolute inset-0 z-decorative">
-        <div className="absolute inset-0 grid-bg" />
-        <div
-          className="absolute -inset-1 rounded-full bg-primary/20 blur-[140px] animate-[pulse_8s_ease-in-out_infinite]"
-        />
-        <div className="absolute top-1/4 left-1/4 h-64 w-64 rounded-full bg-primary/10 blur-[120px]" />
-        <div className="absolute -bottom-1/4 right-1/4 h-48 w-48 rounded-full bg-primary/5 blur-[100px]" />
+      <span className="bg-word top-14 hidden sm:block" aria-hidden="true">
+        Developer
+      </span>
+
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+        <span className="absolute -right-16 top-28 h-52 w-52 rounded-full border border-yellow/50" />
+        <span className="absolute right-10 top-44 h-2.5 w-2.5 rounded-full bg-yellow" />
+        <span className="absolute left-[4%] top-[52%] hidden h-24 w-px bg-line lg:block" />
+        <span className="absolute left-[4%] top-[52%] hidden h-2 w-2 -translate-x-[3.5px] rounded-full bg-yellow lg:block" />
+        <span className="absolute bottom-8 right-[8%] hidden text-[9px] font-bold uppercase tracking-[0.3em] text-subtle/70 lg:block">
+          Scroll to explore
+        </span>
       </div>
 
-      <div className="section-container relative z-content">
-        <motion.div variants={container} initial="hidden" animate="show">
-          <motion.div variants={item} className="text-center overflow-guard w-full max-w-[900px] mx-auto">
-            {/* Sticky note labels - Space Grotesk Bold */}
-            <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-6 overflow-guard">
-              <span className="sticky-note tilt-n2">
-                <span className="font-heading text-[10px] sm:text-xs font-bold text-foreground uppercase tracking-tighter">
-                  CREATIVE DEVELOPER
-                </span>
-              </span>
-              <span className="sticky-note tilt-2">
-                <span className="font-heading text-[10px] sm:text-xs font-bold text-foreground uppercase tracking-tighter">
-                  VIDEO EDITOR
-                </span>
-              </span>
-              <span className="sticky-note tilt-n3">
-                <span className="font-heading text-[10px] sm:text-xs font-bold text-foreground uppercase tracking-tighter">
-                  DIGITAL CREATOR
-                </span>
-              </span>
-            </div>
-
-            {/* Hero H1 - Space Grotesk Bold 700 */}
-            <motion.h1
-              variants={item}
-              className="mt-2 mb-6 font-heading font-bold leading-[0.95] text-display-lg heading-gradient animate-foil break-words"
-            >
-              I&apos;M <span className="text-primary">ANNA</span>MALAI.
-            </motion.h1>
-
-            {/* Body text - Inter 400 */}
-            <motion.p
-              variants={item}
-              className="mx-auto mt-0 mb-8 sm:mb-10 max-w-[640px] text-base sm:text-lg font-body text-muted-foreground leading-[1.7] text-balance"
-            >
-              I build digital experiences and create content that moves brands
-              forward.
-            </motion.p>
-
-            <motion.p
-              variants={item}
-              className="mx-auto max-w-[640px] text-sm font-body text-muted-foreground/80 leading-relaxed text-balance"
-            >
-              I&apos;m an AI &amp; Data Science student, creative developer, and content
-              creator helping businesses turn ideas into websites, visual stories,
-              and digital experiences.
-            </motion.p>
-
-            {/* CTA buttons - Space Grotesk Bold */}
-            <motion.div
-              variants={item}
-              className="mt-12 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 overflow-guard"
-            >
-              <a
-                href="#work"
-                className="group relative inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-xs font-heading font-bold text-primary-foreground uppercase tracking-widest transition-all hover:scale-105 hover:-translate-y-0.5 shadow-sm hover:shadow-md"
-              >
-                <Play className="h-4 w-4" />
-                VIEW MY WORK
-              </a>
-              <a
-                href="#contact"
-                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl border border-border/60 bg-card px-6 py-3.5 text-xs font-heading font-bold text-foreground uppercase tracking-widest transition-all hover:bg-secondary hover:-translate-y-0.5"
-              >
-                LET&apos;S COLLABORATE
-              </a>
+      <div className="section-container relative z-10">
+        <div className="grid gap-12 lg:grid-cols-[1.16fr_0.84fr] lg:items-start lg:gap-10 xl:gap-16">
+          <motion.div
+            variants={container}
+            initial={reduce ? false : "hidden"}
+            animate="show"
+            className="min-w-0"
+          >
+            <motion.div variants={item} className="eyebrow">
+              Partners in progress
             </motion.div>
 
-            {/* Bottom sticky notes - Space Grotesk Bold */}
-            <motion.div
+            <motion.div variants={item} className="relative mt-6">
+              <div className="mb-5 flex justify-end sm:absolute sm:right-0 sm:top-0 sm:mb-0">
+                <motion.div
+                  whileHover={reduce ? undefined : { scale: 1.06, rotate: 4 }}
+                  transition={{ type: "spring", stiffness: 260, damping: 18 }}
+                  className="grid h-16 w-16 place-items-center rounded-full border border-yellow bg-white text-lg font-extrabold tracking-[-0.04em] text-ink shadow-soft sm:h-[72px] sm:w-[72px] sm:text-xl"
+                  aria-label="MA monogram"
+                >
+                  {profile.monogram}
+                </motion.div>
+              </div>
+
+              <h1 className="max-w-[12ch] text-hero-name text-ink">
+                {profile.name}
+              </h1>
+
+              <p className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm font-medium text-body sm:text-[15px]">
+                <span className="inline-flex items-center gap-2 rounded-full bg-yellow px-3 py-1 text-[9px] font-extrabold uppercase tracking-[0.14em] text-ink">
+                  {profile.founderTitle}
+                </span>
+                <span className="hidden h-1 w-1 rounded-full bg-yellow sm:block" aria-hidden="true" />
+                <span className="text-subtle">Madurai, India</span>
+              </p>
+            </motion.div>
+
+            <motion.p
               variants={item}
-              className="mt-12 sm:mt-14 flex flex-wrap items-center justify-center gap-3 sm:gap-4 overflow-guard"
+              className="mt-7 max-w-[62ch] text-[15px] leading-[1.85] text-body sm:text-base"
             >
-              <span className="sticky-note tilt-n1">
-                <span className="font-heading text-[10px] font-bold text-foreground uppercase tracking-tighter">
-                  Ideas &rarr; Impact
+              {profile.aboutProfile}
+            </motion.p>
+
+            <motion.div variants={item} className="mt-9">
+              <div className="group card-soft relative overflow-hidden border-l-[3px] border-l-yellow p-5 transition-colors duration-300 hover:border-yellow sm:p-6">
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <span className="inline-flex items-center gap-2 rounded-full bg-yellow px-3 py-1 text-[9px] font-extrabold uppercase tracking-[0.14em] text-ink">
+                    <Sparkles className="h-3 w-3" aria-hidden="true" />
+                    Featured project
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.12em] text-subtle">
+                    <span className="h-1.5 w-1.5 rounded-full bg-yellow" aria-hidden="true" />
+                    Live website
+                  </span>
+                </div>
+
+                <div className="mt-5 grid gap-5 sm:grid-cols-[minmax(0,1fr)_180px] sm:items-center lg:grid-cols-[minmax(0,1fr)_190px]">
+                  <div className="min-w-0">
+                    <h2 className="text-2xl font-extrabold tracking-[-0.04em] text-ink sm:text-[28px]">
+                      {featured.title}
+                    </h2>
+                    <p className="mt-2 text-[13px] leading-relaxed text-body sm:text-sm">
+                      {featured.description}
+                    </p>
+                    <a
+                      href={featured.demoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="link-arrow mt-4"
+                    >
+                      View Project
+                      <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                    </a>
+                  </div>
+
+                  <a
+                    href={featured.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Open ${featured.title} website`}
+                    className="relative block aspect-[4/3] overflow-hidden rounded-xl border border-line bg-white"
+                  >
+                    <Image
+                      src={featured.image}
+                      alt={featured.imageAlt}
+                      fill
+                      sizes="(max-width: 639px) calc(100vw - 72px), 190px"
+                      className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.04]"
+                    />
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div variants={item} className="mt-9">
+              <div className="mb-4 flex items-center gap-3">
+                <span className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-ink">
+                  Connect
                 </span>
-              </span>
-              <span className="sticky-note tilt-3">
-                <span className="font-heading text-[10px] font-bold text-foreground uppercase tracking-tighter">
-                  3+ YEARS CREATING
-                </span>
-              </span>
+                <span className="h-px flex-1 bg-line" aria-hidden="true" />
+              </div>
+
+              <div className="grid gap-2.5 sm:grid-cols-2">
+                {connectLinks.map((link) => {
+                  const Icon = connectIconMap[link.icon];
+                  const external = link.external
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {};
+
+                  return (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      {...external}
+                      className="pill group min-w-0"
+                    >
+                      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-card text-ink transition-colors duration-200 group-hover:bg-yellow">
+                        <Icon className="h-4 w-4" aria-hidden="true" />
+                      </span>
+                      <span className="min-w-0">
+                        <span className="block text-[9px] font-bold uppercase tracking-[0.12em] text-subtle">
+                          {link.label}
+                        </span>
+                        <span className="block truncate text-xs font-semibold text-ink">
+                          {link.value}
+                        </span>
+                      </span>
+                      <ArrowUpRight
+                        className="ml-auto h-3.5 w-3.5 shrink-0 text-subtle transition-colors group-hover:text-ink"
+                        aria-hidden="true"
+                      />
+                    </a>
+                  );
+                })}
+              </div>
+              
+              <div className="mt-6 h-px bg-gradient-to-r from-yellow/50 via-yellow to-transparent" aria-hidden="true" />
             </motion.div>
           </motion.div>
-        </motion.div>
+
+          <aside className="min-w-0 space-y-5 lg:pt-2">
+            <Reveal delay={0.08}>
+              <div className="card p-6">
+                <div className="flex items-center justify-between gap-3">
+                  <h2 className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-ink">
+                    Specializations
+                  </h2>
+                  <span className="h-1.5 w-1.5 rounded-full bg-yellow" aria-hidden="true" />
+                </div>
+
+                <ul className="mt-5 space-y-0">
+                  {specializations.map((specialization) => (
+                    <li
+                      key={specialization}
+                      className="flex items-center gap-3 border-b border-line py-2.5 text-[13px] font-medium text-ink last:border-0 last:pb-0 first:pt-0"
+                    >
+                      <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-yellow" aria-hidden="true" />
+                      {specialization}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.16}>
+              <div className="card relative overflow-hidden p-6">
+                <span
+                  className="absolute -right-10 -top-10 h-28 w-28 rounded-full border border-yellow/60"
+                  aria-hidden="true"
+                />
+                <div className="flex items-center justify-between gap-3">
+                  <h2 className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-ink">
+                    Experience
+                  </h2>
+                  <Clock3 className="h-4 w-4 text-subtle" aria-hidden="true" />
+                </div>
+                <p className="mt-5 text-[clamp(2.4rem,5vw,3.4rem)] font-extrabold leading-none tracking-[-0.06em] text-ink">
+                  {experienceCard.value}
+                </p>
+                <p className="mt-3 max-w-[30ch] text-[13px] leading-relaxed text-body">
+                  {experienceCard.description}
+                </p>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.24}>
+              <div className="card-soft p-6">
+                <div className="flex items-center gap-3">
+                  <span className="grid h-9 w-9 place-items-center rounded-full bg-yellow text-ink">
+                    <BadgeCheck className="h-4 w-4" aria-hidden="true" />
+                  </span>
+                  <div>
+                    <p className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-ink">
+                      Available for freelance
+                    </p>
+                    <p className="mt-0.5 text-[11px] text-subtle">Remote &amp; on-site projects</p>
+                  </div>
+                </div>
+
+                <div className="mt-5 space-y-2.5 border-t border-line pt-4">
+                  <p className="flex items-center gap-2 text-[11px] font-medium text-body">
+                    <MapPin className="h-3.5 w-3.5 shrink-0 text-subtle" aria-hidden="true" />
+                    {profile.location}
+                  </p>
+                  <p className="flex items-center gap-2 text-[11px] font-medium text-body">
+                    <Sparkles className="h-3.5 w-3.5 shrink-0 text-subtle" aria-hidden="true" />
+                    Founder at {profile.agency}
+                  </p>
+                </div>
+              </div>
+            </Reveal>
+          </aside>
+        </div>
       </div>
     </section>
   );

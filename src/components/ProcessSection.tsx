@@ -1,87 +1,92 @@
-"use client";
+import {
+  CheckCircle2,
+  Compass,
+  PenTool,
+  Rocket,
+  Search,
+  type LucideIcon,
+} from "lucide-react";
+import { workProcess } from "@/lib/data";
+import { Reveal } from "@/components/Reveal";
 
-import React from "react";
-import { motion } from "framer-motion";
-import { Search, PenTool, Code, Rocket } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
-import { devProcess } from "@/lib/data";
-
-const stepIcons: Record<string, LucideIcon> = {
-  "01": Search,
-  "02": PenTool,
-  "03": Code,
-  "04": Rocket,
+const iconMap: Record<string, LucideIcon> = {
+  Understand: Search,
+  Plan: Compass,
+  "Design & produce": PenTool,
+  "Review & refine": CheckCircle2,
+  Deliver: Rocket,
 };
 
 export function ProcessSection() {
   return (
-    <section
-      id="process"
-      className="relative section-py overflow-hidden"
-    >
-      <div className="pointer-events-none absolute inset-0 z-decorative grid-bg" />
-      <div className="section-container relative z-content">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }}
-          className="mx-auto max-w-4xl text-center mb-16 overflow-guard"
-        >
-          <div className="flex items-center justify-center gap-2 mb-6">
-            <span className="sticky-note tilt-n3">
-              <span className="font-heading text-xs font-bold text-foreground uppercase tracking-tighter">
-                THE PROCESS
-              </span>
-            </span>
+    <section id="process" className="relative section-pad">
+      <div className="section-container">
+        <Reveal>
+          <div className="flex flex-col gap-6 border-t border-line pt-12 md:flex-row md:items-end md:justify-between md:pt-16">
+            <div>
+              <p className="eyebrow">Process</p>
+              <h2 className="mt-4 max-w-2xl text-section-title text-ink">
+                From idea to delivery
+              </h2>
+            </div>
+            <p className="max-w-md text-[13px] leading-relaxed text-body md:text-right">
+              A simple, honest process — clear steps, steady progress, and no
+              mystery about what happens next.
+            </p>
           </div>
-          <h2 className="font-heading font-bold leading-[1.05] text-display-sm heading-gradient mb-6 text-balance">
-            From Idea to Something Real.
-          </h2>
-          <p className="text-muted-foreground text-sm md:text-base max-w-2xl mx-auto font-body leading-relaxed text-balance">
-            A personal, four-step approach to every project I take on.
-          </p>
-        </motion.div>
+        </Reveal>
 
-        <div className="relative mx-auto max-w-3xl overflow-guard">
+        <div className="relative mt-9">
           <div
+            className="absolute left-0 right-0 top-[52px] hidden border-t border-line lg:block"
             aria-hidden="true"
-            className="absolute bottom-8 left-5 top-8 w-px bg-primary/20"
           />
 
-          {devProcess.map((step, i) => (
-            <motion.div
-              key={step.step}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] as const }}
-              whileHover={{ x: 4 }}
-              className="relative mb-6 grid min-w-0 grid-cols-[40px_minmax(0,1fr)] items-start gap-4 last:mb-0 sm:gap-6"
-            >
-              <span className="relative z-content mt-5 grid h-10 w-10 place-items-center rounded-full border border-border/60 bg-card font-display text-xs font-bold text-primary shadow-sm">
-                {step.step}
-              </span>
-
-              <div className="paper-card min-w-0 p-5 sm:p-6">
-                <div className="mb-3 flex min-w-0 items-center gap-3">
-                  <div className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-primary/10 text-primary">
-                    {React.createElement(stepIcons[step.step], {
-                      className: "h-4 w-4",
-                      "aria-hidden": true,
-                    })}
-                  </div>
-                  <span className="min-w-0 font-heading text-xs font-bold uppercase tracking-widest text-foreground sm:text-sm">
-                    STEP {step.step} — {step.title}
-                  </span>
-                </div>
-                <p className="text-sm font-body leading-relaxed text-muted-foreground/90">
-                  {step.description}
-                </p>
-              </div>
-            </motion.div>
-          ))}
+          <ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            {workProcess.map((step, index) => {
+              const Icon = iconMap[step.title] ?? PenTool;
+              return (
+                <Reveal key={step.step} delay={0.03 + index * 0.05}>
+                  <li className="relative">
+                    <div className="card flex h-full flex-col p-5 transition-colors duration-300 hover:border-yellow">
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="relative z-10 grid h-9 w-9 place-items-center rounded-full border border-line bg-white text-ink">
+                          <Icon className="h-4 w-4" aria-hidden="true" />
+                        </span>
+                        <span className="text-[11px] font-extrabold tracking-[0.12em] text-subtle">
+                          {step.step}
+                        </span>
+                      </div>
+                      <h3 className="mt-5 text-base font-extrabold tracking-[-0.03em] text-ink">
+                        {step.title}
+                      </h3>
+                      <p className="mt-2 text-[12px] leading-relaxed text-body">
+                        {step.description}
+                      </p>
+                    </div>
+                  </li>
+                </Reveal>
+              );
+            })}
+          </ol>
         </div>
+
+        <Reveal delay={0.1}>
+          <div className="mt-9 flex flex-col items-start justify-between gap-4 rounded-2xl border border-line bg-card p-5 sm:flex-row sm:items-center sm:p-6">
+            <div>
+              <p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-subtle">
+                Ready when you are
+              </p>
+              <p className="mt-1.5 text-lg font-bold tracking-[-0.03em] text-ink">
+                Tell me what you are building.
+              </p>
+            </div>
+            <a href="#contact" className="btn-dark shrink-0">
+              Start a Project
+              <Rocket className="h-4 w-4" aria-hidden="true" />
+            </a>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
