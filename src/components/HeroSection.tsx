@@ -63,9 +63,6 @@ export function HeroSection() {
         <span className="absolute right-10 top-44 h-2.5 w-2.5 rounded-full bg-yellow" />
         <span className="absolute left-[4%] top-[52%] hidden h-24 w-px bg-line lg:block" />
         <span className="absolute left-[4%] top-[52%] hidden h-2 w-2 -translate-x-[3.5px] rounded-full bg-yellow lg:block" />
-        <span className="absolute bottom-8 right-[8%] hidden text-[9px] font-bold uppercase tracking-[0.3em] text-subtle/70 lg:block">
-          Scroll to explore
-        </span>
       </div>
 
       <div className="section-container relative z-10">
