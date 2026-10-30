@@ -36,9 +36,9 @@ export default function Home() {
       <Navbar />
 
       <motion.div
-        initial={{ opacity: 1, y: 0 }}
-        animate={showIntro ? { opacity: 1, y: 0 } : { opacity: 0, y: -100 }}
-        transition={{ duration: 0.4, ease: "easeInOut" }}
+        initial={{ y: 0 }}
+        animate={showIntro ? { y: 0 } : { y: -100 }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
         className={`fixed inset-0 z-50 bg-black flex items-center justify-center overflow-hidden ${showIntro ? "" : "pointer-events-none"}`}
       >
         <div className="relative z-10 flex flex-col items-center gap-4 text-center">
