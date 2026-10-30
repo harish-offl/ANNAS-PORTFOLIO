@@ -14,13 +14,16 @@ import { Footer } from "@/components/Footer";
 
 export default function Home() {
   const [showIntro, setShowIntro] = useState(true);
+  const [animationDone, setAnimationDone] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setShowIntro(false);
-    }, 2500);
+      if (animationDone) {
+        setShowIntro(false);
+      }
+    }, 300);
     return () => clearTimeout(timer);
-  }, []);
+  }, [animationDone]);
 
   return (
     <>
@@ -42,7 +45,11 @@ export default function Home() {
         className={`fixed inset-0 z-50 bg-black flex items-center justify-center overflow-hidden ${showIntro ? "" : "pointer-events-none"}`}
       >
         <div className="relative z-10 flex flex-col items-center gap-4 text-center">
-          <AppleHelloEnglishEffect speed={1.2} className="w-full max-w-2xl" />
+          <AppleHelloEnglishEffect
+            speed={1.2}
+            className="w-full max-w-2xl"
+            onAnimationComplete={() => setAnimationDone(true)}
+          />
         </div>
       </motion.div>
 
