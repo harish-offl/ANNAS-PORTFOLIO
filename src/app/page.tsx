@@ -18,7 +18,7 @@ export default function Home() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowIntro(false);
-    }, 8500);
+    }, 3000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -38,14 +38,10 @@ export default function Home() {
       <motion.div
         initial={{ opacity: 1, y: 0 }}
         animate={showIntro ? { opacity: 1, y: 0 } : { opacity: 0, y: -100 }}
-        transition={{ duration: 0.8, ease: "easeInOut" }}
+        transition={{ duration: 0.4, ease: "easeInOut" }}
         className={`fixed inset-0 z-50 bg-black flex items-center justify-center overflow-hidden ${showIntro ? "" : "pointer-events-none"}`}
       >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,#1a1a1a_0%,#000000_70%)]" />
-        <div className="relative z-10 flex flex-col items-center gap-8 text-center">
-          <h2 className="text-2xl font-extrabold tracking-[0.15em] uppercase text-gray-400">
-            Hello
-          </h2>
+        <div className="relative z-10 flex flex-col items-center gap-4 text-center">
           <AppleHelloEnglishEffect speed={1.1} className="w-full max-w-2xl" />
         </div>
       </motion.div>
