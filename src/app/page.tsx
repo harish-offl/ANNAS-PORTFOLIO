@@ -17,12 +17,18 @@ export default function Home() {
   const [animationDone, setAnimationDone] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const animationTimer = setTimeout(() => {
       if (animationDone) {
         setShowIntro(false);
       }
     }, 300);
-    return () => clearTimeout(timer);
+    const safetyTimer = setTimeout(() => {
+      setShowIntro(false);
+    }, 8000);
+    return () => {
+      clearTimeout(animationTimer);
+      clearTimeout(safetyTimer);
+    };
   }, [animationDone]);
 
   return (
