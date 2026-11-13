@@ -1,4 +1,3 @@
-import Image from "next/image";
 import {
   ArrowUpRight,
   Clapperboard,
@@ -7,14 +6,14 @@ import {
   Play,
   Smartphone,
 } from "lucide-react";
-import { designWork, profile, videoFormats } from "@/lib/data";
+import { profile, videoFormats } from "@/lib/data";
 import { Reveal } from "@/components/Reveal";
 
 const formatIcons = [Smartphone, MonitorPlay, Megaphone];
 
 export function CreativeWorkSection() {
   return (
-    <section id="creative" className="relative section-pad pt-0">
+    <section id="creative" className="relative section-pad pt-0 pb-0">
       <div className="section-container">
         <Reveal>
           <div className="flex flex-col gap-5 border-t border-line pt-12 md:flex-row md:items-end md:justify-between md:pt-16">
@@ -117,61 +116,6 @@ export function CreativeWorkSection() {
             </p>
           </div>
 
-          <div>
-            <Reveal>
-              <div className="flex flex-wrap items-end justify-between gap-3">
-                <h3 className="text-xl font-extrabold tracking-[-0.04em] text-ink sm:text-2xl">
-                  Design &amp; Visual Storytelling
-                </h3>
-                <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-subtle">
-                  Visual direction · Interfaces
-                </span>
-              </div>
-            </Reveal>
-
-            <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-5">
-              {designWork.map((work, index) => (
-                <Reveal key={work.title} delay={0.04 + index * 0.04}>
-                  <a
-                    href={work.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group card block overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-yellow hover:shadow-lift"
-                  >
-                    <div className="relative aspect-[4/3] overflow-hidden border-b border-line bg-card">
-                      <Image
-                        src={work.image}
-                        alt={work.imageAlt}
-                        fill
-                        loading="lazy"
-                        sizes="(max-width: 639px) calc(100vw - 40px), 50vw"
-                        className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.035]"
-                      />
-                    </div>
-                    <div className="flex items-center justify-between gap-3 p-4">
-                      <div className="min-w-0">
-                        <p className="text-[9px] font-bold uppercase tracking-[0.14em] text-subtle">
-                          {work.label}
-                        </p>
-                        <p className="mt-1 truncate text-sm font-bold tracking-[-0.02em] text-ink">
-                          {work.title}
-                        </p>
-                      </div>
-                      <ArrowUpRight
-                        className="h-4 w-4 shrink-0 text-subtle transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-ink"
-                        aria-hidden="true"
-                      />
-                    </div>
-                  </a>
-                </Reveal>
-              ))}
-            </div>
-
-            <p className="mt-3 text-[10px] font-medium text-subtle">
-              Selected visual direction from client websites and digital products.
-              Additional poster and social creative work is available on request.
-            </p>
-          </div>
         </div>
       </div>
     </section>

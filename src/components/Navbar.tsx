@@ -18,6 +18,7 @@ export function Navbar() {
       let current = "home";
 
       for (const link of navLinks) {
+        if (!link.href.startsWith("#")) continue;
         const element = document.querySelector(link.href) as HTMLElement | null;
         if (!element) continue;
         const top = element.getBoundingClientRect().top + window.scrollY;

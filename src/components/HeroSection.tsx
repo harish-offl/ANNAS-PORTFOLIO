@@ -52,7 +52,7 @@ export function HeroSection() {
   return (
     <section
       id="about"
-      className="relative overflow-hidden pb-16 pt-28 sm:pb-20 sm:pt-32 lg:pb-28 lg:pt-36"
+      className="relative overflow-hidden pt-28 sm:pt-32 lg:pt-36"
     >
       <span className="bg-word top-14 hidden sm:block" aria-hidden="true">
         Developer
@@ -168,7 +168,7 @@ export function HeroSection() {
                 <span className="h-px flex-1 bg-line" aria-hidden="true" />
               </div>
 
-              <div className="grid gap-2.5 sm:grid-cols-3">
+              <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-4">
                 {connectLinks.map((link) => {
                   const Icon = connectIconMap[link.icon];
                   const external = link.external

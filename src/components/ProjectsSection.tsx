@@ -40,9 +40,6 @@ function ProjectCard({ project }: { project: Project }) {
           sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1279px) 50vw, 560px"
           className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.035]"
         />
-        <span className="absolute left-3 top-3 rounded-full bg-yellow px-2.5 py-1 text-[9px] font-extrabold uppercase tracking-[0.12em] text-ink">
-          {project.shortCategory}
-        </span>
         <span className="absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-full border border-white/50 bg-ink/75 px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.1em] text-white backdrop-blur-sm">
           {project.status === "private" ? (
             <Lock className="h-2.5 w-2.5" aria-hidden="true" />
@@ -56,9 +53,6 @@ function ProjectCard({ project }: { project: Project }) {
       <div className="flex flex-1 flex-col p-5 sm:p-6">
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
-            <p className="text-[9px] font-bold uppercase tracking-[0.16em] text-subtle">
-              {project.category}
-            </p>
             <h3 className="mt-1.5 text-xl font-extrabold tracking-[-0.035em] text-ink">
               {project.title}
             </h3>
@@ -123,7 +117,7 @@ export function ProjectsSection() {
   };
 
   return (
-    <section id="projects" className="relative section-pad">
+    <section id="projects" className="relative section-pad pt-0">
       <div className="section-container">
         <Reveal>
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">

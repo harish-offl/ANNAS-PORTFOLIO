@@ -77,13 +77,6 @@ export type ConnectLink = {
 
 export const connectLinks: ConnectLink[] = [
   {
-    label: "Instagram",
-    value: "@annamalai_offl",
-    href: profile.socials.instagram,
-    icon: "instagram",
-    external: true,
-  },
-  {
     label: "LinkedIn",
     value: "in/mrmannamalai",
     href: profile.socials.linkedin,
@@ -96,12 +89,6 @@ export const connectLinks: ConnectLink[] = [
     href: profile.socials.github,
     icon: "github",
     external: true,
-  },
-  {
-    label: "Phone",
-    value: profile.phone,
-    href: `tel:${profile.phone.replace(/\s/g, "")}`,
-    icon: "phone",
   },
   {
     label: "Email",
@@ -558,4 +545,5 @@ export const navLinks = [
   { label: "Projects", href: "#projects" },
   { label: "Process", href: "#process" },
   { label: "Contact", href: "#contact" },
+  { label: "Canvas", href: "/canvas" },
 ];

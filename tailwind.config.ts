@@ -67,10 +67,10 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        body: ["var(--font-inter)", "system-ui", "sans-serif"],
-        display: ["var(--font-inter)", "system-ui", "sans-serif"],
-        heading: ["var(--font-inter)", "system-ui", "sans-serif"],
+        sans: ["var(--font-bricolage)", "system-ui", "sans-serif"],
+        body: ["var(--font-bricolage)", "system-ui", "sans-serif"],
+        display: ["var(--font-bricolage)", "system-ui", "sans-serif"],
+        heading: ["var(--font-bricolage)", "system-ui", "sans-serif"],
       },
       fontSize: {
         "hero-name": [
@@ -79,7 +79,7 @@ const config: Config = {
         ],
         "section-title": [
           "clamp(2rem, 4.8vw, 3.6rem)",
-          { lineHeight: "1", letterSpacing: "-0.045em", fontWeight: "800" },
+          { lineHeight: "1", letterSpacing: "-0.045em", fontWeight: "700" },
         ],
         "display-lg": [
           "clamp(2.25rem, 6vw, 5rem)",

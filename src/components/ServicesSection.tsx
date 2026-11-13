@@ -22,7 +22,7 @@ const iconMap: Record<string, LucideIcon> = {
 
 export function ServicesSection() {
   return (
-    <section id="services" className="relative section-pad">
+    <section id="services" className="relative section-pad pt-0">
       <div className="section-container">
         <Reveal>
           <div className="flex flex-col gap-6 border-t border-line pt-12 md:flex-row md:items-end md:justify-between md:pt-16">
