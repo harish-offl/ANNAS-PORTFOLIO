@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 
@@ -10,7 +10,7 @@ export function CanvasCTA() {
     >
       <div className="section-container relative z-10">
         <div className="card p-10 sm:p-16 lg:p-24 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 overflow-hidden relative">
-          <div className="absolute -inset-1 bg-gradient-to-r from-[#fff000] to-transparent blur-lg opacity-20" aria-hidden="true" />
+          <div className="absolute -inset-1 bg-gradient-to-r from-[#A3D026] to-transparent blur-lg opacity-20" aria-hidden="true" />
           <div className="relative z-10 flex-1">
             <h2 className="text-[clamp(1.6rem,4vw,2rem)] font-extrabold leading-none tracking-[-0.04em] text-[#080808] sm:text-[2.25rem]">
               Preview the roles and shared platform architecture

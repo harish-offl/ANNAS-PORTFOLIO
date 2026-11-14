@@ -1,0 +1,103 @@
+﻿.ll-track-wrap {
+  --ll-gap: 60px;
+  --ll-logo-h: 48px;
+  --ll-dur: 70s;
+  --ll-fade-w: 12%;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+.ll-track-wrap::before,
+.ll-track-wrap::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: var(--ll-fade-w);
+  z-index: 2;
+  pointer-events: none;
+}
+.ll-track-wrap::before {
+  left: 0;
+  background: linear-gradient(to right, var(--ll-bg, #fff), transparent);
+}
+.ll-track-wrap::after {
+  right: 0;
+  background: linear-gradient(to left, var(--ll-bg, #fff), transparent);
+}
+.ll-track {
+  display: flex;
+  align-items: center;
+  gap: var(--ll-gap);
+  width: max-content;
+  animation: ll-scroll var(--ll-dur) linear infinite;
+  cursor: grab;
+  user-select: none;
+}
+.ll-track:active { cursor: grabbing; }
+.ll-track-wrap:hover .ll-track,
+.ll-track-wrap:focus-within .ll-track { animation-play-state: paused; }
+@keyframes ll-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ll-track { animation: none; }
+}
+.ll-logo-btn {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  transition: background 220ms ease, border-color 220ms ease, transform 220ms ease;
+  outline: none;
+  flex-shrink: 0;
+}
+.ll-logo-btn:focus-visible {
+  outline: 3px solid #A3D026;
+  outline-offset: 2px;
+}
+.ll-logo-btn:hover {
+  background: rgba(0,0,0,0.04);
+  border-color: rgba(0,0,0,0.08);
+  transform: translateY(-2px) scale(1.07);
+}
+.ll-logo-btn .ll-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--ll-logo-h);
+  transition: transform 220ms ease;
+}
+.ll-logo-btn .ll-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #626262;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 180ms ease, transform 180ms ease;
+  pointer-events: none;
+}
+.ll-logo-btn:hover .ll-label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* PNG logos have transparent padding — scale them up so the mark fills the slot */
+.ll-logo-btn .ll-icon-wrap img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain;
+  transform: scale(1.35);
+}
+.ll-logo-btn:hover .ll-icon-wrap img {
+  transform: scale(1.45);
+}

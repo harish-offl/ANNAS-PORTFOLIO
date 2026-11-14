@@ -73,7 +73,7 @@ export function CanvasPricing() {
               variants={item}
               className={`card p-8 flex flex-col gap-5 h-full relative ${
                 tier.featured
-                  ? "border-yellow/50 shadow-[0_20px_40px_-12px_rgba(255,240,0,0.25)]"
+                  ? "border-yellow/50 shadow-[0_20px_40px_-12px_rgba(163,208,38,0.25)]"
                   : ""
               }`}
             >

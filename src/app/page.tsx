@@ -8,6 +8,7 @@ import { HeroSection } from "@/components/HeroSection";
 import { ProjectsSection } from "@/components/ProjectsSection";
 import { CreativeWorkSection } from "@/components/CreativeWorkSection";
 import { ServicesSection } from "@/components/ServicesSection";
+import { ToolsSection } from "@/components/tools/ToolsSection";
 import { ProcessSection } from "@/components/ProcessSection";
 import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
@@ -64,6 +65,7 @@ export default function Home() {
         <ProjectsSection />
         <CreativeWorkSection />
         <ServicesSection />
+        <ToolsSection />
         <ProcessSection />
         <ContactSection />
       </main>

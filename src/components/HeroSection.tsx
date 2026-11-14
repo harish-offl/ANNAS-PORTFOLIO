@@ -89,7 +89,13 @@ export function HeroSection() {
                 </motion.div>
               </div>
 
-              <h1 className="max-w-[12ch] text-hero-name text-ink">
+              <h1
+                className="text-hero-name font-extrabold text-ink"
+                style={{
+                  fontWeight: 800,
+                  fontVariationSettings: '"opsz" 96, "wght" 800',
+                }}
+              >
                 {profile.name}
               </h1>
 

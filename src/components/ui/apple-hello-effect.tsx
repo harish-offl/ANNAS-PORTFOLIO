@@ -30,7 +30,8 @@ function AppleHelloEnglishEffect({
 
   return (
     <motion.svg
-      className={cn("h-20 text-yellow-500", className as string)}
+      className={cn("h-20", className as string)}
+      style={{ color: "#A3D026" }}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 638 200"
       fill="none"

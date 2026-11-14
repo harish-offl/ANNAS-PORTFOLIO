@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss";
+﻿import type { Config } from "tailwindcss";
 import tailwindcssAnimate from "tailwindcss-animate";
 
 const config: Config = {
@@ -19,8 +19,8 @@ const config: Config = {
         body: "#626262",
         subtle: "#858585",
         yellow: {
-          DEFAULT: "#FFF000",
-          hover: "#E8D900",
+          DEFAULT: "#A3D026",
+          hover: "#8ab820",
         },
         card: "#F7F7F7",
         surface: "#FAFAFA",
@@ -29,7 +29,7 @@ const config: Config = {
         paper: "#FFFFFF",
         border: "#EAEAEA",
         input: "#EAEAEA",
-        ring: "#FFF000",
+        ring: "#A3D026",
         primary: {
           DEFAULT: "#080808",
           foreground: "#FFFFFF",
@@ -39,7 +39,7 @@ const config: Config = {
           foreground: "#080808",
         },
         accent: {
-          DEFAULT: "#FFF000",
+          DEFAULT: "#A3D026",
           foreground: "#080808",
         },
         muted: {
@@ -47,18 +47,18 @@ const config: Config = {
           foreground: "#626262",
         },
         brand: {
-          yellow: "#FFF000",
+          yellow: "#A3D026",
           ink: "#080808",
           card: "#F7F7F7",
           line: "#EAEAEA",
         },
         forest: "#080808",
         cream: "#FFFFFF",
-        green: "#FFF000",
+        green: "#A3D026",
         grass: {
-          DEFAULT: "#FFF000",
-          deep: "#E8D900",
-          soft: "#FFF566",
+          DEFAULT: "#A3D026",
+          deep: "#8ab820",
+          soft: "#b8e030",
         },
       },
       borderRadius: {
@@ -67,19 +67,19 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ["var(--font-bricolage)", "system-ui", "sans-serif"],
-        body: ["var(--font-bricolage)", "system-ui", "sans-serif"],
-        display: ["var(--font-bricolage)", "system-ui", "sans-serif"],
-        heading: ["var(--font-bricolage)", "system-ui", "sans-serif"],
+        sans: ["Bricolage Grotesque", "system-ui", "sans-serif"],
+        body: ["Bricolage Grotesque", "system-ui", "sans-serif"],
+        display: ["Bricolage Grotesque", "system-ui", "sans-serif"],
+        heading: ["Bricolage Grotesque", "system-ui", "sans-serif"],
       },
       fontSize: {
         "hero-name": [
-          "clamp(3rem, 8.5vw, 6.8rem)",
-          { lineHeight: "0.95", letterSpacing: "-0.055em", fontWeight: "800" },
+          "clamp(4rem, 11vw, 9rem)",
+          { lineHeight: "0.92", letterSpacing: "-0.055em", fontWeight: "800" },
         ],
         "section-title": [
           "clamp(2rem, 4.8vw, 3.6rem)",
-          { lineHeight: "1", letterSpacing: "-0.045em", fontWeight: "700" },
+          { lineHeight: "1", letterSpacing: "-0.045em", fontWeight: "800" },
         ],
         "display-lg": [
           "clamp(2.25rem, 6vw, 5rem)",
